@@ -1,0 +1,1 @@
+/afs/cern.ch/work/s/sabidi/public/Data/data11_7TeV.00190933.physics_Egamma.merge.NTUP_HSG2.f412_m1007_p996_p1223_p1487_p1488_tid01247828_00/NTUP_HSG2.01247828._000019.root.1

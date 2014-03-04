@@ -1,0 +1,1 @@
+/afs/cern.ch/user/s/sabidi/eos/atlas/atlascerngroupdisk/phys-higgs/HSG2/D3PD/mc12_8TeV.167562.Pythia8_AU2CTEQ6L1_ttH125_ZZ4lep.merge.NTUP_HSG2.e1461_s1499_s1504_r3658_r3549_p1344/*

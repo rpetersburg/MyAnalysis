@@ -1,0 +1,37 @@
+10
+
+dir
+72
+svn+ssh://svn.cern.ch/reps/atlas-sabidi/trunk/MyAnalysis/Run/InputFile
+svn+ssh://svn.cern.ch/reps/atlas-sabidi
+
+
+
+2013-10-21T09:18:53.973443Z
+53
+sabidi
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+4525493e-7705-40b1-a816-d608a930855b
+
+GRL
+dir
+
+PileupConfigFile
+dir
+
+SmearingD0
+dir
+

@@ -1,0 +1,1 @@
+/afs/cern.ch/work/s/sabidi/public/Data/mc12_8TeV.161988.Sherpa_CT10_llll_ZZ_EW6_noHiggs.merge.NTUP_HSG2.e1434_s1771_s1741_r4829_r4540_p1344/NTUP_HSG2.01377877._00000*.root.1
