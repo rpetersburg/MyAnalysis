@@ -131,7 +131,7 @@ int main(int argc, char *argv[])
 	cutFlow->SetupPrintEventList(fileOverWrite, "EventList");
 	
 	if(doMC2011) 				cutFlow->outputFilePath = "Output/mc11a_VBFH125.root";
-	else if(doMC2011NewGeo)     cutFlow->outputFilePath = "Output/mc11c_VBFH125.root";
+	else if(doMC2011NewGeo)     cutFlow->outputFilePath = "Output/mc11d_VBFH125.root";
 	else if(doMC2012) 			cutFlow->outputFilePath = "Output/mc12a_VBFH125.root";
 	else if(doMC2012NewGeo) 	cutFlow->outputFilePath = "Output/mc12c_VBFH125.root";
 	else if(doData2011) 		cutFlow->outputFilePath = "Output/data11.root";

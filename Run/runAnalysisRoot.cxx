@@ -14,8 +14,9 @@ void runAnalysisRoot()
 	gROOT->ProcessLine(".x $ROOTCOREDIR/scripts/load_packages.C");
 	
 	Bool_t doMC2011 		= false;
+	Bool_t doMC2011NewGeo	= true;
 	Bool_t doMC2012 		= false;
-	Bool_t doMC2012NewGeo	= true;
+	Bool_t doMC2012NewGeo	= false;
 	Bool_t doData2011 		= false;
 	Bool_t doData2012 		= false;
 	Bool_t doggF2011 		= false;
@@ -49,6 +50,7 @@ void runAnalysisRoot()
 	// Actual analysis
 	ifstream dataFileName;
 	if(doMC2011) 				dataFileName.open("DataFile/DataFileMC2011Chain.txt");
+	else if(doMC2011NewGeo)		dataFileName.open("DataFile/DataFileMC2011_NewGeo_Chain.txt");
 	else if(doMC2012) 			dataFileName.open("DataFile/DataFileMC2012Chain.txt");
 	else if(doMC2012NewGeo)  	dataFileName.open("DataFile/DataFileMC2012_NewGeo_Chain.txt");
 	else if(doData2011) 		dataFileName.open("DataFile/DataFileData2011Chain.txt");
@@ -100,6 +102,7 @@ void runAnalysisRoot()
 	cutFlow->SetupPrintEventList(fileOverWrite, "EventList");
 	
 	if(doMC2011) 				cutFlow->outputFilePath = "Output/mc11a_VBFH125.root";
+	else if(doMC2011NewGeo)		cutFlow->outputFilePath = "Output/mc11d_VBFH125.root";
 	else if(doMC2012) 			cutFlow->outputFilePath = "Output/mc12a_VBFH125.root";
 	else if(doMC2012NewGeo) 	cutFlow->outputFilePath = "Output/mc12c_VBFH125.root";
 	else if(doData2011) 		cutFlow->outputFilePath = "Output/data11.root";
