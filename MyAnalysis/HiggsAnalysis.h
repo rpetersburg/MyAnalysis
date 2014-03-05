@@ -80,6 +80,7 @@ using namespace std;
 class HiggsAnalysis 
 {
 	public :
+		Int_t asdf;
 		// Main Variables
 		D3PDReader::Event *event;
 		TTree *physicsTree; 
