@@ -138,17 +138,18 @@ void runAnalysisRoot()
 
 	// For Debug
 	
-	cutFlow->printDebug(45623, false);
-	cutFlow->printDebug(29461, false);
-	cutFlow->printDebug(393, false);
-	cutFlow->printDebug(32632, false);
-	cutFlow->printDebug(24565, true);
-	cutFlow->printDebug(5604);
-	cutFlow->printDebug(8185);
-	cutFlow->printDebug(42353);
-	cutFlow->printDebug(1968);
-	cutFlow->printDebug(24605);
-	cutFlow->printMCInfo(42353);
+	// cutFlow->printDebug(45623, false);
+	// cutFlow->printDebug(29461, false);
+	// cutFlow->printDebug(393, false);
+	// cutFlow->printDebug(32632, false);
+	// cutFlow->printDebug(24565, true);
+	// cutFlow->printDebug(5604);
+	// cutFlow->printDebug(8185);
+	// cutFlow->printDebug(42353);
+	// cutFlow->printDebug(1968);
+	// cutFlow->printDebug(24605);
+	// cutFlow->printMCInfo(42353);
+	cutFlow->printDebug(6);
 
 	// // Saving the final Histogram
 	// cutFlow->SaveHist(fileOverWrite);	
