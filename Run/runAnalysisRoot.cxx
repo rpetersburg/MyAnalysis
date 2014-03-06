@@ -138,103 +138,103 @@ void runAnalysisRoot()
 
 	// For Debug
 	
-	//cutFlow->printDebug(45623, false);
-	//cutFlow->printDebug(29461, false);
-	//cutFlow->printDebug(393, false);
-	//cutFlow->printDebug(32632, false);
-	//cutFlow->printDebug(24565, true);
-	//cutFlow->printDebug(5604);
-	//cutFlow->printDebug(8185);
-	//cutFlow->printDebug(42353);
-	//cutFlow->printDebug(1968);
-	//cutFlow->printDebug(24605);
-	//cutFlow->printMCInfo(42353);
+	cutFlow->printDebug(45623, false);
+	cutFlow->printDebug(29461, false);
+	cutFlow->printDebug(393, false);
+	cutFlow->printDebug(32632, false);
+	cutFlow->printDebug(24565, true);
+	cutFlow->printDebug(5604);
+	cutFlow->printDebug(8185);
+	cutFlow->printDebug(42353);
+	cutFlow->printDebug(1968);
+	cutFlow->printDebug(24605);
+	cutFlow->printMCInfo(42353);
 
-	// Saving the final Histrogram
-	cutFlow->SaveHist(fileOverWrite);	
-	fileOverWrite = false;
-	// Stop the time
-	timet.Stop();
+	// // Saving the final Histogram
+	// cutFlow->SaveHist(fileOverWrite);	
+	// fileOverWrite = false;
+	// // Stop the time
+	// timet.Stop();
 
-	// Final Output
-	cout<<"Passed Cut: "<< passedAllCut<<endl;
-	cout<<"Time (Real): "<<timet.RealTime()<<" Time (CPU):"<<timet.CpuTime()<<endl;
-	cout<<"Total Cut Flow"<<endl; 
+	// // Final Output
+	// cout<<"Passed Cut: "<< passedAllCut<<endl;
+	// cout<<"Time (Real): "<<timet.RealTime()<<" Time (CPU):"<<timet.CpuTime()<<endl;
+	// cout<<"Total Cut Flow"<<endl; 
 	
-	// Printing the Final Number
-	for(Int_t i = 0; i < cutFlow->nCut; i++)
-	{
-		cout<<setw(16)<<cutFlow->cutName[i]<<":\t"<<cutFlow->cutPass[i]<<endl;
-	}
-	// Printing the muon final Number
-	cout <<endl<<"Muon Cut Flow"<<endl; 
-	for(Int_t i = 0; i < cutFlow->nMuCut; i++)
-	{
-		cout<<setw(16)<<cutFlow->cutMuName[i]<<":\t"<<cutFlow->cutMuPass[i]<<endl;
-	}
-	// Printing the electron final Number
-	cout <<endl<<"Electron Cut Flow"<<endl; 
-	for(Int_t i = 0; i < cutFlow->nElCut; i++)
-	{
-		cout<<setw(16)<<cutFlow->cutElName[i]<<":\t"<<cutFlow->cutElPass[i]<<"\t:\t"<<cutFlow->cutElLoosePass[i]<<endl;
-	}
-	// Printing the jets final Number
-	cout <<endl<<"Jets Cut Flow"<<endl; 
-	for(Int_t i = 0; i < cutFlow->nJetsCut; i++)
-	{
-		cout<<setw(16)<<cutFlow->cutJetsName[i]<<":\t"<<cutFlow->cutJetsPass[i]<<endl;
-	}
-	// Printing the channel specific Number
-	cout <<endl<<"Channel Flow\t\t4MU\t\t4E\t\t2L2L"<<endl; 
-	for(Int_t i = 0; i < cutFlow->nCH; i++)
-	{
-		cout<<setw(12)<<cutFlow->cutCHName[i]<<":\t\t";
-		cout<<setw(7)<<cutFlow->cut4MuPass[i]<<"\t\t";
-		cout<<setw(7)<<cutFlow->cut4ElPass[i]<<"\t\t";
-		cout<<setw(7)<<cutFlow->cut2L2LPass[i]<<"\t\t";
-		cout<<setw(7)<<cutFlow->cutlleePass[i]<<endl;
+	// // Printing the Final Number
+	// for(Int_t i = 0; i < cutFlow->nCut; i++)
+	// {
+		// cout<<setw(16)<<cutFlow->cutName[i]<<":\t"<<cutFlow->cutPass[i]<<endl;
+	// }
+	// // Printing the muon final Number
+	// cout <<endl<<"Muon Cut Flow"<<endl; 
+	// for(Int_t i = 0; i < cutFlow->nMuCut; i++)
+	// {
+		// cout<<setw(16)<<cutFlow->cutMuName[i]<<":\t"<<cutFlow->cutMuPass[i]<<endl;
+	// }
+	// // Printing the electron final Number
+	// cout <<endl<<"Electron Cut Flow"<<endl; 
+	// for(Int_t i = 0; i < cutFlow->nElCut; i++)
+	// {
+		// cout<<setw(16)<<cutFlow->cutElName[i]<<":\t"<<cutFlow->cutElPass[i]<<"\t:\t"<<cutFlow->cutElLoosePass[i]<<endl;
+	// }
+	// // Printing the jets final Number
+	// cout <<endl<<"Jets Cut Flow"<<endl; 
+	// for(Int_t i = 0; i < cutFlow->nJetsCut; i++)
+	// {
+		// cout<<setw(16)<<cutFlow->cutJetsName[i]<<":\t"<<cutFlow->cutJetsPass[i]<<endl;
+	// }
+	// // Printing the channel specific Number
+	// cout <<endl<<"Channel Flow\t\t4MU\t\t4E\t\t2L2L"<<endl; 
+	// for(Int_t i = 0; i < cutFlow->nCH; i++)
+	// {
+		// cout<<setw(12)<<cutFlow->cutCHName[i]<<":\t\t";
+		// cout<<setw(7)<<cutFlow->cut4MuPass[i]<<"\t\t";
+		// cout<<setw(7)<<cutFlow->cut4ElPass[i]<<"\t\t";
+		// cout<<setw(7)<<cutFlow->cut2L2LPass[i]<<"\t\t";
+		// cout<<setw(7)<<cutFlow->cutlleePass[i]<<endl;
 		
-	}
-	if(cutFlow->doWeight)
-	{
-		cout<<endl<<"Cut Flow with Weights"<<endl;
+	// }
+	// if(cutFlow->doWeight)
+	// {
+		// cout<<endl<<"Cut Flow with Weights"<<endl;
 
-		// Printing the Final Number
-		for(Int_t i = 0; i < cutFlow->nCut; i++)
-		{
-			cout<<setw(16)<<setprecision(7)<<cutFlow->cutName[i]<<":\t"<<cutFlow->cutPassW[i]<<endl;
-		}
-		// Printing the channel specific Number
-		cout <<endl<<"Channel Flow\t\t4MU\t\t4E\t\t2L2L"<<endl; 
-		for(Int_t i = 0; i < cutFlow->nCH; i++)
-		{
-			cout<<setw(12)<<cutFlow->cutCHName[i]<<":\t\t";
-			cout<<setw(7)<<setprecision(6)<<cutFlow->cut4MuPassW[i]<<"\t\t";
-			cout<<setw(7)<<setprecision(6)<<cutFlow->cut4ElPassW[i]<<"\t\t";
-			cout<<setw(7)<<setprecision(6)<<cutFlow->cut2L2LPassW[i]<<endl;
+		// // Printing the Final Number
+		// for(Int_t i = 0; i < cutFlow->nCut; i++)
+		// {
+			// cout<<setw(16)<<setprecision(7)<<cutFlow->cutName[i]<<":\t"<<cutFlow->cutPassW[i]<<endl;
+		// }
+		// // Printing the channel specific Number
+		// cout <<endl<<"Channel Flow\t\t4MU\t\t4E\t\t2L2L"<<endl; 
+		// for(Int_t i = 0; i < cutFlow->nCH; i++)
+		// {
+			// cout<<setw(12)<<cutFlow->cutCHName[i]<<":\t\t";
+			// cout<<setw(7)<<setprecision(6)<<cutFlow->cut4MuPassW[i]<<"\t\t";
+			// cout<<setw(7)<<setprecision(6)<<cutFlow->cut4ElPassW[i]<<"\t\t";
+			// cout<<setw(7)<<setprecision(6)<<cutFlow->cut2L2LPassW[i]<<endl;
 			
-		}
-	}
+		// }
+	// }
 
-	// Printing the production Channel Number
-	cout <<endl<<"Production Channel\t\t4MU\t\t4E\t\t2L2L"<<endl; 
-	for(Int_t i = 0; i < cutFlow->nProdCH; i++)
-	{
-		cout<<setw(12)<<cutFlow->prodCHName[i]<<":\t\t";
-		cout<<setw(7)<<cutFlow->prodCH4Mu[i]<<"\t\t";
-		cout<<setw(7)<<cutFlow->prodCH4El[i]<<"\t\t";
-		cout<<setw(7)<<cutFlow->prodCH2L2L[i]<<"\t\t";
-		cout<<setw(7)<<cutFlow->prodCHllee[i]<<endl;
+	// // Printing the production Channel Number
+	// cout <<endl<<"Production Channel\t\t4MU\t\t4E\t\t2L2L"<<endl; 
+	// for(Int_t i = 0; i < cutFlow->nProdCH; i++)
+	// {
+		// cout<<setw(12)<<cutFlow->prodCHName[i]<<":\t\t";
+		// cout<<setw(7)<<cutFlow->prodCH4Mu[i]<<"\t\t";
+		// cout<<setw(7)<<cutFlow->prodCH4El[i]<<"\t\t";
+		// cout<<setw(7)<<cutFlow->prodCH2L2L[i]<<"\t\t";
+		// cout<<setw(7)<<cutFlow->prodCHllee[i]<<endl;
 		
-	}
+	// }
 
-	cout <<endl<<"Truth quad type"<<endl; 
-	for(Int_t i = 0; i < cutFlow->nListTruthQuadType; i++)
-	{
-		cout<<setw(8)<<cutFlow->truthQuadType[i]<<":\t\t";
-		cout<<setw(5)<<cutFlow->nTruthQuadType[i]<<endl;
+	// cout <<endl<<"Truth quad type"<<endl; 
+	// for(Int_t i = 0; i < cutFlow->nListTruthQuadType; i++)
+	// {
+		// cout<<setw(8)<<cutFlow->truthQuadType[i]<<":\t\t";
+		// cout<<setw(5)<<cutFlow->nTruthQuadType[i]<<endl;
 		
-	}
+	// }
 	// Deleting the vars
 	delete cutFlow;
 	delete phyData;

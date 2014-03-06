@@ -26,7 +26,7 @@
 ////////////////////////////////////////////////////////////////////////////////////////
 HiggsAnalysis::HiggsAnalysis (TTree *phyObject, Bool_t tRunningGrid, TString tgridFileName, Bool_t tUseNewGeoData, Int_t tAnaType)
 {	
-	asdf = 0;//========================================================================================================================================correctfsr
+
 	// Reading the TTree
 	event = new D3PDReader::Event();
 	physicsTree = phyObject;
@@ -361,8 +361,7 @@ int HiggsAnalysis::AnalyzeTree()
 		if(AnalyzeTreeEvent(currEvent)) countPassed++;
 		
 		// For keeping track
-		//if(iEvent % 5000 == 0)
-		cout<<"Current Event: "<<iEvent<<endl;//=====================================================================================================================
+		if(iEvent % 5000 == 0) cout<<"Current Event: "<<iEvent<<endl;
 	}
 	
 	// Fill the counting Hist
@@ -3344,7 +3343,7 @@ void HiggsAnalysis::CorrectFSR(QuadLepton * higgs, Int_t Type)
 		//else if(dataYear == 2012) ph_Etcone40_corrected = event->ph.topoEtcone40_corrected();
 		
 		if(lep_curr->getFlavor() == flavor::Muon)
-		{	cout<<"MUON!!!"<<endl;//====================================================================================================
+		{	
 			D3PDReader::MuonD3PDObjectElement* mu_curr = lep_curr->GetMuon();
 			FsrPhotons fsrphotons;
 			FsrPhotons::FsrCandidate cand_curr;
@@ -3377,13 +3376,11 @@ void HiggsAnalysis::CorrectFSR(QuadLepton * higgs, Int_t Type)
     		      std::cout << "Found FSR index, dR, Et, f1, cont " << cand_curr.index << " " << cand_curr.deltaR
     		                 << " " << cand_curr.Et << " " <<  cand_curr.f1 << " " << cand_curr.container << std::endl;
 				cout<<"-------------------"<<endl;}
-				cout<<"Muon "<< i <<" eta: "<<mu_curr->eta()<<" phi: "<<mu_curr->phi()<<endl;//==================================================================================
-				cout<<"   id_theta: "<<mu_curr->id_theta()<<" id_phi: "<<mu_curr->id_phi()<<endl;//==============================================================================
     		  }
 			candVec.push_back(cand_curr);
 		}
 		else if(lep_curr->getFlavor() == flavor::Electron)
-		{	cout<<"ELECTRON!!!"<<endl;//=================================================================================================
+		{	
 			D3PDReader::ElectronD3PDObjectElement* el_curr = lep_curr->GetElectron();
 			FsrPhotons fsrphotons;
 			FsrPhotons::FsrCandidate cand_curr;
@@ -3448,7 +3445,7 @@ void HiggsAnalysis::CorrectFSR(QuadLepton * higgs, Int_t Type)
 				if(isDebugCall) cout<<"FSR collinear candidate passed the Z1 mass cut"<<endl;
     		    TLorentzVector momFSR;
 				momFSR.SetPtEtaPhiM(candidate.Et,candidate.eta,candidate.phi, 0.0);
-				cout<<"FSR collinear: Pt "<<candidate.Et<<" eta "<<candidate.eta<<" phi "<<candidate.phi<<endl;//==================================================================
+	
 
 				Double_t combMass = (higgs->getZ1()->getLepPlus()->get4MomentumNoP() 
 						+ higgs->getZ1()->getLepNeg()->get4MomentumNoP() 
@@ -3499,7 +3496,6 @@ void HiggsAnalysis::CorrectFSR(QuadLepton * higgs, Int_t Type)
 				//cout<<"There is a candidate Far FSR"<<endl;
 				TLorentzVector momFSR;
 				momFSR.SetPtEtaPhiM(candidate.Et,candidate.eta,candidate.phi, 0.0);
-				cout<<"FSR far: Pt "<<candidate.Et<<" eta "<<candidate.eta<<" phi "<<candidate.phi<<endl;//===================================================================
 
 				// Delta R cut: Ensure that deltaR > 0.15 for all the leptons in the quadruplet
 				// Sortof the opposite logic here
@@ -6917,7 +6913,7 @@ void HiggsAnalysis::printDebugInfo()
 	cout<<"DataPeriod: "<<dataPeriod<<endl;
 	cout<<"isMC: "<<isMC<<endl;
 	cout<<"Year: "<<dataYear<<endl;
-	cout<<"AnalyseEventOutput: (don't reall trust this..): "<< AnalyzeTreeEvent(curEvent)<<endl;
+	cout<<"AnalyseEventOutput: (don't really trust this..): "<< AnalyzeTreeEvent(curEvent)<<endl;
 	cout<<"DataPreselectionCut: "<<DataPreselectionCut()<<endl;
 	cout<<"AllPreselectionCut: "<<AllPreselectionCut()<<endl;
 	cout<<"Vertex Cut: "<< VertexCut()<<endl;
