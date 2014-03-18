@@ -14,9 +14,9 @@ void runAnalysisRoot()
 	gROOT->ProcessLine(".x $ROOTCOREDIR/scripts/load_packages.C");
 	
 	Bool_t doMC2011 		= false;
-	Bool_t doMC2011NewGeo	= false;
+	Bool_t doMC2011NewGeo	= true;
 	Bool_t doMC2012 		= false;
-	Bool_t doMC2012NewGeo	= true;
+	Bool_t doMC2012NewGeo	= false;
 	Bool_t doData2011 		= false;
 	Bool_t doData2012 		= false;
 	Bool_t doggF2011 		= false;
