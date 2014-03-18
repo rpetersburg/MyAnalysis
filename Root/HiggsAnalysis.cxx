@@ -362,6 +362,7 @@ int HiggsAnalysis::AnalyzeTree()
 		
 		// For keeping track
 		if(iEvent % 5000 == 0) cout<<"Current Event: "<<iEvent<<endl;
+		cout<<"curEvent: "<<curEvent<<endl;
 	}
 	
 	// Fill the counting Hist
