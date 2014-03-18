@@ -310,8 +310,10 @@ void Correction::InitElectronSmear(Int_t electronCollection)
 		}
 		else
 		{
-			cout<<"Electron SF config file: efficiencySF.offline.RecoTrk.2011.7TeV.rel17p0.v02.root"<<endl;
-        	egSFClassReco->addFileName("../../ElectronEfficiencyCorrection/data/efficiencySF.offline.RecoTrk.2011.7TeV.rel17p0.v02.root");
+			cout<<"Electron SF config file: efficiencySF.offline.RecoTrk.2011.7TeV.rel17p0.v03.root"<<endl;
+        	egSFClassReco->addFileName("../../ElectronEfficiencyCorrection/data/efficiencySF.offline.RecoTrk.2011.7TeV.rel17p0.v03.root");
+			//cout<<"Electron SF config file: efficiencySF.offline.RecoTrk.2011.7TeV.rel17p0.v02.root"<<endl;
+        	//egSFClassReco->addFileName("../../ElectronEfficiencyCorrection/data/efficiencySF.offline.RecoTrk.2011.7TeV.rel17p0.v02.root");
 			//cout<<"Electron SF config file: efficiencySF.offline.RecoTrk.2011.7TeV.rel17p0.v01.root"<<endl;
         	//egSFClassReco->addFileName("../../ElectronEfficiencyCorrection/data/efficiencySF.offline.RecoTrk.2011.7TeV.rel17p0.v01.root");
 
