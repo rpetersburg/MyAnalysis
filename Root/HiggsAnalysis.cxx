@@ -1596,7 +1596,7 @@ void HiggsAnalysis::InitJHUReweight()
 }
 
 
-// Helper for initialzing
+// Helper for initializing
 void HiggsAnalysis::getPeriodEvent()
 {
 	Int_t nRunTemp = event->eventinfo.RunNumber();
@@ -3372,10 +3372,12 @@ void HiggsAnalysis::CorrectFSR(QuadLepton * higgs, Int_t Type)
     		                             el_cur->trackphi(),
     		                             cand_curr,
 										 event->ph.tight())){
+				isDebugCall = true;//=====================================================================================================================
 				if(isDebugCall) {cout<<"Muon "<< i <<" Muon eta: "<<mu_curr->eta()<<" Muon Phi"<<mu_curr->phi()<<endl;
     		      std::cout << "Found FSR index, dR, Et, f1, cont " << cand_curr.index << " " << cand_curr.deltaR
     		                 << " " << cand_curr.Et << " " <<  cand_curr.f1 << " " << cand_curr.container << std::endl;
 				cout<<"-------------------"<<endl;}
+				isDebugCall = false;//====================================================================================================================
     		  }
 			candVec.push_back(cand_curr);
 		}
@@ -3394,10 +3396,12 @@ void HiggsAnalysis::CorrectFSR(QuadLepton * higgs, Int_t Type)
     		                             event->ph.author(), 
     		                             event->ph.tight(), 
       		                             cand_curr)){
+				isDebugCall = true;//====================================================================================================================
 				if(isDebugCall) {cout<<"electron "<< i <<endl;
     		      std::cout << "Found FSR index, dR, Et, f1, cont " << cand_curr.index << " " << cand_curr.deltaR
     		                 << " " << cand_curr.Et << " " <<  cand_curr.f1 << " " << cand_curr.container << std::endl;
 				cout<<"-------------------"<<endl;}
+				isDebugCall = false;//====================================================================================================================
     		  }
 			candVec.push_back(cand_curr);	
 		}
@@ -3441,7 +3445,8 @@ void HiggsAnalysis::CorrectFSR(QuadLepton * higgs, Int_t Type)
 		if(isFSR)
 		{
 			if((higgs->getZ1()->get4Momentum()->M() < 89*1000) && (higgs->getZ1()->get4Momentum()->M() > 66*1000))
-			{
+			{	
+				isDebugCall = true;//====================================================================================================================
 				if(isDebugCall) cout<<"FSR collinear candidate passed the Z1 mass cut"<<endl;
     		    TLorentzVector momFSR;
 				momFSR.SetPtEtaPhiM(candidate.Et,candidate.eta,candidate.phi, 0.0);
@@ -3465,6 +3470,7 @@ void HiggsAnalysis::CorrectFSR(QuadLepton * higgs, Int_t Type)
 					passFSRCollinear = true;
 					higgs->fsrType = fsrType::collFSRZ1mumu;				
 				}
+				isDebugCall = false;//====================================================================================================================
 			}
 		}
 	}
@@ -3509,7 +3515,7 @@ void HiggsAnalysis::CorrectFSR(QuadLepton * higgs, Int_t Type)
 				// If deltaR cut has been pases
 				if(!deltaRCut)
 				{
-
+					isDebugCall = true;//=================================================================================================================
 					if(isDebugCall) cout<<"FSR far candidate passed Delta R cut"<<endl;										
 					//cout<<"Passed Delta R cut"<<endl;
 					Double_t deltaZ1Mass = 999999;
@@ -3557,6 +3563,7 @@ void HiggsAnalysis::CorrectFSR(QuadLepton * higgs, Int_t Type)
 						if(isDebugCall) cout<<"Far FSR attached to Z2"<<endl;
 						higgs->fsrType = fsrType::farFSRZ2;
 					}
+					isDebugCall = false;//================================================================================================================
 				}
 		}
 	}
