@@ -351,7 +351,6 @@ int HiggsAnalysis::AnalyzeTree()
 	{
 		curEvent = iEvent;
 		Long64_t currEvent = iEvent;
-		if (iEvent == 6 || iEvent == 73) isDebugCall = true;
 		TChain* chain = dynamic_cast<TChain *> (physicsTree);
 		if(chain)
 		{
@@ -363,7 +362,6 @@ int HiggsAnalysis::AnalyzeTree()
 		
 		// For keeping track
 		if(iEvent % 5000 == 0) cout<<"Current Event: "<<iEvent<<endl;
-		isDebugCall = false;
 	}
 	
 	// Fill the counting Hist
@@ -3276,7 +3274,7 @@ void HiggsAnalysis::MassCalc(QuadLepton * higgs, Int_t Type)
 // FSR Corrections
 void HiggsAnalysis::CorrectFSR(QuadLepton * higgs, Int_t Type)
 {
-	
+	if (curEvent == 6 || curEvent == 73) isDebugCall = true;
 	// Default FSR correction - no FSR correction
 	higgs->fsrType = fsrType::noFSR;
 	// Getting all the lepton in the quad
@@ -3594,9 +3592,8 @@ void HiggsAnalysis::CorrectFSR(QuadLepton * higgs, Int_t Type)
 		higgs->sum_fsr = higgs->sum_fsr + leptonLorentzFsr[i];
 	}
 	leptonLorentzFsr.clear();
-	//asdf++;
-	//if (asdf>20) exit(0);
-
+	
+	isDebugCall = false;
 }	
 // Zmass Constraint
 void HiggsAnalysis::CorrectZMassConstraint(QuadLepton * higgs, Int_t muType)
