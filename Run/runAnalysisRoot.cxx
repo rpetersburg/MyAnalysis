@@ -41,7 +41,7 @@ void runAnalysisRoot()
 	Bool_t dodataTest2012 	= false;
 	Bool_t dodataTest2011 	= false;
 
-	// Initializing the varibles....
+	// Initializing the variables....
 	TString filePath;
 
 	// For Keeping track of when to overwrite
