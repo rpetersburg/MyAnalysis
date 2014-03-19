@@ -3372,10 +3372,12 @@ void HiggsAnalysis::CorrectFSR(QuadLepton * higgs, Int_t Type)
     		                             el_cur->trackphi(),
     		                             cand_curr,
 										 event->ph.tight())){
+				isDebugCall = true;
 				if(isDebugCall) {cout<<"Muon "<< i <<" Muon eta: "<<mu_curr->eta()<<" Muon Phi"<<mu_curr->phi()<<endl;
     		      std::cout << "Found FSR index, dR, Et, f1, cont " << cand_curr.index << " " << cand_curr.deltaR
     		                 << " " << cand_curr.Et << " " <<  cand_curr.f1 << " " << cand_curr.container << std::endl;
 				cout<<"-------------------"<<endl;}
+				isDebugCall = false;
     		  }
 			candVec.push_back(cand_curr);
 		}
@@ -3436,6 +3438,7 @@ void HiggsAnalysis::CorrectFSR(QuadLepton * higgs, Int_t Type)
 				isFSR = true;
 			}
 		}
+		isDebugCall = true;
 		if(isDebugCall) cout<<"FSR colinear candidate Passed the deltaR cut"<<endl;
 		// if FSR found, then do the checks associated with Z1 for the collinear FSR
 		if(isFSR)
@@ -3467,6 +3470,7 @@ void HiggsAnalysis::CorrectFSR(QuadLepton * higgs, Int_t Type)
 				}
 			}
 		}
+		isDebugCall = false;
 	}
 	// If no collinear FSR has been found
 	if(!passFSRCollinear)
