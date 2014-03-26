@@ -14,16 +14,10 @@ using namespace std;
 //void runAnalysis()
 int main(int argc, char *argv[])
 {
-<<<<<<< HEAD
-	if(argc > 2) 
-	{
-		cout<<"too many input parameters"<<endl;
-=======
 
 	if(argc > 2) 
 	{
 		cout<<"to many input paraments"<<endl;
->>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 		exit(-1);
 	}
 
@@ -31,14 +25,8 @@ int main(int argc, char *argv[])
 	gROOT->ProcessLine(".x $ROOTCOREDIR/scripts/load_packages.C");
 	
 	Bool_t doMC2011 		= false;
-<<<<<<< HEAD
-	Bool_t doMC2011NewGeo   = true;
-	Bool_t doMC2012 		= false;
-	Bool_t doMC2012NewGeo	= false;
-=======
 	Bool_t doMC2012 		= false;
 	Bool_t doMC2012NewGeo	= true;
->>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 	Bool_t doData2011 		= false;
 	Bool_t doData2012 		= false;
 	Bool_t doggF2011 		= false;
@@ -80,11 +68,7 @@ int main(int argc, char *argv[])
 	else if(!strcmp(argv[1], "15")) 	doggH121 	= true;
 	else if(!strcmp(argv[1], "16")) 	doggH123p5 	= true;
 	
-<<<<<<< HEAD
-	// Initializing the variables....
-=======
 	// Initializing the varibles....
->>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 	TString filePath;
 
 	// For Keeping track of when to overwrite
@@ -93,10 +77,6 @@ int main(int argc, char *argv[])
 	// Actual analysis
 	ifstream dataFileName;
 	if(doMC2011) 				dataFileName.open("DataFile/DataFileMC2011Chain.txt");
-<<<<<<< HEAD
-	else if(doMC2011NewGeo)     dataFileName.open("DataFile/DataFileMC2011_NewGeo_Chain.txt");
-=======
->>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 	else if(doMC2012) 			dataFileName.open("DataFile/DataFileMC2012Chain.txt");
 	else if(doMC2012NewGeo)  	dataFileName.open("DataFile/DataFileMC2012_NewGeo_Chain.txt");
 	else if(doData2011) 		dataFileName.open("DataFile/DataFileData2011Chain.txt");
@@ -130,27 +110,16 @@ int main(int argc, char *argv[])
 
 	// Reading the TChain Files
 	do{
-<<<<<<< HEAD
- 	  	dataFileName >> filePath;
- 		// Checking if there is a file name or not
- 		if (filePath.Length() <= 0) continue;
- 		cout << filePath << endl;
-=======
 
  	  	dataFileName >> filePath;
  		// Checking if there is a file name or not
  		if (filePath.Length() <= 0) continue;
  		cout << filePath<<endl;
->>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 		// Adding it to the chain		
 		phyData->Add(filePath.Data());
 	}while (dataFileName.good());
 
-<<<<<<< HEAD
-	// Initializing the cutFlow
-=======
 	// Initialzing the cutFlow
->>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 	HiggsAnalysis *cutFlow = new HiggsAnalysis(phyData, false, "GridRunMismatch", true, doAnalysis::StdHZZllll);
 
 	cutFlow->InitializeVar();
@@ -162,10 +131,6 @@ int main(int argc, char *argv[])
 	cutFlow->SetupPrintEventList(fileOverWrite, "EventList");
 	
 	if(doMC2011) 				cutFlow->outputFilePath = "Output/mc11a_VBFH125.root";
-<<<<<<< HEAD
-	else if(doMC2011NewGeo)     cutFlow->outputFilePath = "Output/mc11d_VBFH125.root";
-=======
->>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 	else if(doMC2012) 			cutFlow->outputFilePath = "Output/mc12a_VBFH125.root";
 	else if(doMC2012NewGeo) 	cutFlow->outputFilePath = "Output/mc12c_VBFH125.root";
 	else if(doData2011) 		cutFlow->outputFilePath = "Output/data11.root";

@@ -40,10 +40,7 @@
 
 #include "HiggsZZ4lUtils/McOverlapRemoval.h"
 #include "HiggsZZ4lUtils/GetElicityAngles.h"
-<<<<<<< HEAD
-=======
 #include "HiggsZZ4lUtils/BRCorrection.h"
->>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 
 #include "GoodRunsLists/TGoodRunsListReader.h"
 #include "GoodRunsLists/TGoodRunsListWriter.h"
@@ -64,10 +61,7 @@
 
 #include "H4lBDTWeights/H4lBDTWeights.h"
 
-<<<<<<< HEAD
-=======
 #include "BCHCleaningTool/BCHCleaningToolRoot.h"
->>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 
 #include <TTree.h>
 #include <TChain.h>
@@ -88,10 +82,6 @@ using namespace std;
 class HiggsAnalysis 
 {
 	public :
-<<<<<<< HEAD
-		Int_t asdf;
-=======
->>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 		// Main Variables
 		D3PDReader::Event *event;
 		TTree *physicsTree; 
@@ -104,11 +94,7 @@ class HiggsAnalysis
 		JetsObject *jetsObj_Fid;
 		JetsObject *jetsObjTruth_Fid;
 
-<<<<<<< HEAD
-		// Final Higgs Quadleptons
-=======
 		// Final Higgs Quadleptong
->>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 		QuadLepton *higgsCandidate4Mu;
 		QuadLepton *higgsCandidate4El;
 		QuadLepton *higgsCandidate2L2L;
@@ -150,22 +136,15 @@ class HiggsAnalysis
 		// To Control if I want to use the new Likelihood Tool
 		Bool_t useLikelihood;
 
-<<<<<<< HEAD
-		// To Keep track it is it a debug call
-=======
 		// To Kepp track it is it a debug call
->>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 		Bool_t isDebugCall;
 		Bool_t isDebugCallllee;
 		Bool_t printWeight;
 
-<<<<<<< HEAD
-=======
 		// BCHCut
 		Bool_t temp_BCHCutMedium;
 		Bool_t temp_BCHCutTight;
 		
->>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 		// Tools
 		Root::TPileupReweighting* pileupTool;
   		
@@ -179,18 +158,12 @@ class HiggsAnalysis
 		Root::TGoodRunsList grl;
 		
 		Root::TTileTripReader* TileTrip;
-<<<<<<< HEAD
-		
-		HiggsCrossSection Higgs_xs;
-		H4lBrRatio *higgs_bror;
-=======
 		BCHTool::BCHCleaningToolRoot* thebchTool;
 		BCHTool::BCHCleaningToolRoot* thebchToolMedium;
 		
 		HiggsCrossSection Higgs_xs;
 		H4lBrRatio *higgs_bror;
 		BRCorrection * brCorr;
->>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 
 		ggFReweighting *ggFReweight;
 
@@ -218,10 +191,7 @@ class HiggsAnalysis
 		// Helper Variables for event
 		Int_t curEvent;
 		Int_t dataYear;
-<<<<<<< HEAD
-=======
 		Bool_t is2012;
->>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 		Int_t streamName;
 		TString dataPeriod;
 		Bool_t noTauSample;
@@ -239,10 +209,7 @@ class HiggsAnalysis
 		Bool_t isMC;
 
 		Int_t runNumber_sf;
-<<<<<<< HEAD
-=======
 		Int_t lbn_sf;
->>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 		Int_t mcRunNumber;
 
 		TString currFileName;
@@ -399,12 +366,9 @@ class HiggsAnalysis
 		Bool_t VertexCut();
 		Int_t getNVertex(Int_t nCutVertex);
 
-<<<<<<< HEAD
-=======
 		// BCH cut
 		Bool_t BCHCut();
 
->>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 		// Trigger Functions
 		Bool_t SingleElectronTrigger(Int_t runNumber);
 		Bool_t DiElectronTrigger(Int_t runNumber);
@@ -523,10 +487,7 @@ class HiggsAnalysis
 		void InitTriggerMatchingTool();
 		void InitGoodRunList();
 		void InitTileTrip();
-<<<<<<< HEAD
-=======
 		void InitBCHCleaning();
->>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 		void InitggFReweight();
 		void InitCategoryBDTTool();
 		void InitBDTTool();

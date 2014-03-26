@@ -1,1 +1,0 @@
-/afs/cern.ch/work/s/sabidi/public/Data/mc12_8TeV.160205.PowhegPythia8_AU2CT10_VBFH125_ZZ4lep.merge.NTUP_HSG2.e1195_s1469_s1470_r3542_r3549_p1344_tid01133935_00/NTUP_HSG2.01133935._00000*.root.1

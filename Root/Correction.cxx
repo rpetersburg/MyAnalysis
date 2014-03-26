@@ -252,9 +252,6 @@ void Correction::InitElectronSmear(Int_t electronCollection)
 	if(dataYear == 2011){
 	  // New Rescaler to do a lot of things related to electron/scale crack and other things
       elRescale->setFileName("../../ElectronPhotonFourMomentumCorrection/data/egammaEnergyCorrectionData.root");
-<<<<<<< HEAD
-      elRescale->setESModel(egEnergyCorr::es2011c);
-=======
 
 	  if (currCollection == MCCollection::MC11c || currDataCollection == dataCalibType::y2011c) 
 	  {
@@ -264,7 +261,6 @@ void Correction::InitElectronSmear(Int_t electronCollection)
 	  {
 		  elRescale->setESModel(egEnergyCorr::es2011d);
 	  }
->>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 	  elRescale->initialize();
     }
 	else if (dataYear == 2012 ){
@@ -324,11 +320,6 @@ void Correction::InitElectronSmear(Int_t electronCollection)
 		{
 			cout<<"Electron SF config file: efficiencySF.offline.RecoTrk.2011.7TeV.rel17p0.v03.root"<<endl;
         	egSFClassReco->addFileName("../../ElectronEfficiencyCorrection/data/efficiencySF.offline.RecoTrk.2011.7TeV.rel17p0.v03.root");
-<<<<<<< HEAD
-			//cout<<"Electron SF config file: efficiencySF.offline.RecoTrk.2011.7TeV.rel17p0.v02.root"<<endl;
-        	//egSFClassReco->addFileName("../../ElectronEfficiencyCorrection/data/efficiencySF.offline.RecoTrk.2011.7TeV.rel17p0.v02.root");
-=======
->>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 			//cout<<"Electron SF config file: efficiencySF.offline.RecoTrk.2011.7TeV.rel17p0.v01.root"<<endl;
         	//egSFClassReco->addFileName("../../ElectronEfficiencyCorrection/data/efficiencySF.offline.RecoTrk.2011.7TeV.rel17p0.v01.root");
 
@@ -366,13 +357,6 @@ void Correction::InitElectronSmear(Int_t electronCollection)
 		}
 		else if(electronCollection == electronCollection::Likelihood)
 		{
-<<<<<<< HEAD
-			cout<<"(Warning Electron) SF config file: Need to fix this"<<endl;
-			cout<<"Electron SF config file: ElectronEfficiencyCorrection/data/efficiencySF.offline.LooseLLH.2012.8TeV.rel17p2.v07.root"<<endl;
-        	egSFClassID->addFileName("../../ElectronEfficiencyCorrection/data/efficiencySF.offline.LooseLLH.2012.8TeV.rel17p2.v07.root");
-			cout<<"Electron SF config file : ElectronEfficiencyCorrection/data/efficiencySF.offline.RecoTrk.2012.8TeV.rel17p2.v07.root"<<endl;
-        	egSFClassReco->addFileName("../../ElectronEfficiencyCorrection/data/efficiencySF.offline.RecoTrk.2012.8TeV.rel17p2.v07.root");
-=======
 			if(currCollection == MCCollection::MC12a || currCollection == MCCollection::MC12b || currDataCollection == dataCalibType::y2012ab)
 			{
 				cout<<"(Warning Electron) SF config file: Need to fix this"<<endl;
@@ -389,7 +373,6 @@ void Correction::InitElectronSmear(Int_t electronCollection)
         		egSFClassReco->addFileName("../../ElectronEfficiencyCorrection/data/efficiencySF.offline.RecoTrk.2012.8TeV.rel17p2.GEO21.v01.root");
 			}
 
->>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 		}
 		else
 		{
@@ -533,11 +516,8 @@ vector<Double_t> Correction::SmearElectron(D3PDReader::ElectronD3PDObject * el, 
 			else if(sysVar == doSys::PileUpDown)		res = egEnergyCorr::Resolution::PileUpDown;
 
 		    elRescale->setRandomSeed(EventNumber + 100*i);
-<<<<<<< HEAD
-=======
  		 	//if(i == 0 )((*el)[i].cl_etaCalo)() = -0.393008;
   			//if(i == 0 )((*el)[i].cl_phiCalo)() = 0.092456;
->>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 
 			double newE = E;
 			if ( ((*el)[i].author() == 1) || ((*el)[i].author() == 3) ){
@@ -582,18 +562,11 @@ vector<Double_t> Correction::SmearElectron(D3PDReader::ElectronD3PDObject * el, 
     		}	
 			//if(isDebugCall&& sysVar == doSys::Nom)
 			//{
-<<<<<<< HEAD
-			//	cout<<"Input to rescaleTool: rawcl_Es0"<< ((*el)[i].rawcl_Es0)();
-			//	cout<<"rawcl_Es1: "<<((*el)[i].rawcl_Es1)() <<" rawcl_Es2: "<<((*el)[i].rawcl_Es2)() <<" rawcl_Es3: "<< ((*el)[i].rawcl_Es3)()<<endl;
-			//	cout<<"eta: "<<eta<<" cl_phi: "<< ((*el)[i].cl_phi)()<<" etaTrk: "<< etaTrk<< " cl_E: "<< ((*el)[i].cl_E)();
-			//	cout<< " cl_etaCalo: "<<((*el)[i].cl_etaCalo)() << " cl_phiCalo: "<< ((*el)[i].cl_phiCalo)()<<endl;
-=======
 			//	cout<<"Input to rescaleTool: runnumber: "<<RunNumber<<" rawcl_Es0: "<< ((*el)[i].rawcl_Es0)();
 			//	cout<<" rawcl_Es1: "<<((*el)[i].rawcl_Es1)() <<" rawcl_Es2: "<<((*el)[i].rawcl_Es2)() <<" rawcl_Es3: "<< ((*el)[i].rawcl_Es3)()<<endl;
 			//	cout<<"eta: "<<eta<<" cl_phi: "<< ((*el)[i].cl_phi)()<<" etaTrk: "<< etaTrk<< " cl_E: "<< ((*el)[i].cl_E)();
 			//	cout<< " cl_etaCalo: "<<((*el)[i].cl_etaCalo)() << " cl_phiCalo: "<< ((*el)[i].cl_phiCalo)()<<endl;
 			//	cout<<"RunNumber: "<<RunNumber<<" dataType: "<<dataType<<" scaleVar: "<<scaleVar<<" res: "<<res<<" resType: "<<resType<<endl;
->>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 			//}
 		   	Double_t newEt = newE/cosh(etaTrk);
 			Double_t ratio =  newEt/Et;
@@ -658,15 +631,9 @@ vector<Double_t> Correction::SmearElectron(D3PDReader::ElectronD3PDObject * el, 
 				//{
 				//	cout<<"track: pt:"<<track.Pt()<<" eta: "<<track.Eta()<<" phi: "<<track.Phi()<<" E: "<<track.E()<<endl;
  				//	cout<<"Cluster: pT: "<<cluster.Pt()<<" eta: "<<cluster.Eta()<<" phi: "<<cluster.Phi()<<" E: "<<cluster.E()<<endl;
-<<<<<<< HEAD
-   				//	cout<<"el_qoverp_LM: "<<el_qoverp_LM<<" trackcov_qoverp: "<<(*el)[i].trackcov_qoverp()<<endl;
-    			//	cout<<"E-E_combined  = "<<fabs(E-combined.E()) <<endl;
-    			//	cout<<"E_combined  = "<<combined.E() <<endl;
-=======
    			//		cout<<"el_qoverp_LM: "<<el_qoverp_LM<<" trackcov_qoverp: "<<(*el)[i].trackcov_qoverp()<<endl;
     		//		cout<<"E-E_combined  = "<<fabs(E-combined.E()) <<endl;
     		//		cout<<"E_combined  = "<<combined.E() <<endl;
->>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 				//}
     			newE = combined.E();
 
@@ -679,11 +646,7 @@ vector<Double_t> Correction::SmearElectron(D3PDReader::ElectronD3PDObject * el, 
 			Et = newEt;
 			clPt *= ratio; 
 
-<<<<<<< HEAD
-			if(isDebugCall && sysVar == doSys::Nom) cout<<"AfterEP E: "<<E<<" Final Et: "<<Et<<" final corrEl: "<<corrEl<<endl;
-=======
 			//if(isDebugCall && sysVar == doSys::Nom) cout<<"AfterEP E: "<<E<<" Final Et: "<<Et<<" final corrEl: "<<corrEl<<endl;
->>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 
 		}
 
@@ -706,13 +669,6 @@ vector<Double_t> Correction::SmearElectron(D3PDReader::ElectronD3PDObject * el, 
 			{
 
 				const Root::TResult &sf_ID = egSFClassID->calculate(PATCore::ParticleDataType::Full,RunNumber,eta,clEt);
-<<<<<<< HEAD
-      			const Root::TResult &sf_Reco = egSFClassReco->calculate(PATCore::ParticleDataType::Full,RunNumber,eta,clEt);	
-
-				Double_t SF_eff_reco = sf_Reco.getScaleFactor();
-      			Double_t SF_eff_id = sf_ID.getScaleFactor();
-      			elEff = SF_eff_reco * SF_eff_id;
-=======
 				const Root::TResult &sf_Reco = egSFClassReco->calculate(PATCore::ParticleDataType::Full,RunNumber,eta,clEt);	
 
 				Double_t SF_eff_reco = sf_Reco.getScaleFactor();
@@ -725,7 +681,6 @@ vector<Double_t> Correction::SmearElectron(D3PDReader::ElectronD3PDObject * el, 
 				//	cout<<"reco SF: "<<SF_eff_reco<<" id SF: "<<SF_eff_reco<<endl;
 				//}
 
->>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 			}
 
 			electronEff.push_back(elEff);			
@@ -964,13 +919,8 @@ void Correction::SmearMuon(D3PDReader::MuonD3PDObject * mu, Int_t EventNumber, I
 					else cout<<"Error: Correction::SmearMuon: Eff Calo Type Mismatch"<<endl;
 					if(isDebugCall)
 					{
-<<<<<<< HEAD
-						cout<<"--------------"<<endl;
-						cout<<"Calo Muon: "<<" pT: "<<tlv.Pt()<<" mueff: "<<muEff<<endl;
-=======
 						//cout<<"--------------"<<endl;
 						//cout<<"Calo Muon: "<<" pT: "<<tlv.Pt()<<" mueff: "<<muEff<<endl;
->>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 					}
 				}
 				muonCaloEff.push_back(muEff);
@@ -1088,19 +1038,6 @@ void Correction::SmearMuon(D3PDReader::MuonD3PDObject * mu, Int_t EventNumber, I
 					Double_t pTCBSmeared = pT;
 					Double_t pTMSSmeared = pT;
 					Double_t pTIDSmeared = pT;
-<<<<<<< HEAD
-					if(isDebugCall)
-					{
-						cout<<"Muon "<< i<<endl;
-						cout<<"Before Smear MS: "<<ptMs;
-						cout<<" ID: "<<pTId;
-						cout<<" CB: "<<pT;
-						cout<<" Eta: "<<eta;
-						cout<<" IDOnly: "<<(*mu)[i].id_pt;
-						cout<<" MSOnly: "<<(*mu)[i].me_pt<<endl;
-
-					}
-=======
 					//if(isDebugCall)
 					//{
 					//	cout<<"Muon "<< i<<endl;
@@ -1112,7 +1049,6 @@ void Correction::SmearMuon(D3PDReader::MuonD3PDObject * mu, Int_t EventNumber, I
 					//	cout<<" MSOnly: "<<(*mu)[i].me_pt<<endl;
 
 					//}
->>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 					if(fabs(eta) <= 2.7) // to supress warings
 					{
 
@@ -1146,17 +1082,6 @@ void Correction::SmearMuon(D3PDReader::MuonD3PDObject * mu, Int_t EventNumber, I
 
 
 					}
-<<<<<<< HEAD
-					if(isDebugCall)
-					{
-						cout<<"After Smear MS: "<<pTMSSmeared;
-						cout<<" ID: "<<pTIDSmeared;
-						cout<<" CB: "<<pTCBSmeared;
-						cout<<" Eta: "<<eta;
-						cout<<" IDOnly: "<<(*mu)[i].id_pt;
-						cout<<" MSOnly: "<<(*mu)[i].me_pt<<endl;
-					}
-=======
 					//if(isDebugCall)
 					//{
 					//	cout<<"After Smear MS: "<<pTMSSmeared;
@@ -1166,7 +1091,6 @@ void Correction::SmearMuon(D3PDReader::MuonD3PDObject * mu, Int_t EventNumber, I
 					//	cout<<" IDOnly: "<<(*mu)[i].id_pt;
 					//	cout<<" MSOnly: "<<(*mu)[i].me_pt<<endl;
 					//}
->>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 
 					smear = pTCBSmeared/pT;
 					pT = pTCBSmeared;
@@ -1244,17 +1168,10 @@ void Correction::SmearMuon(D3PDReader::MuonD3PDObject * mu, Int_t EventNumber, I
 					{
 						muEff = StacoSCF->scaleFactor(charge, tlv);
 					}
-<<<<<<< HEAD
-					if(isDebugCall)
-					{
-						cout<<"Staco Muon: "<<" pT: "<<tlv.Pt()<<" eta: "<<tlv.Eta()<<" phi: "<<tlv.Phi()<<" E: "<<tlv.E()<<" mueff: "<<muEff<<endl;
-					}
-=======
 					//if(isDebugCall)
 					//{
 					//	cout<<"Staco Muon: "<<" pT: "<<tlv.Pt()<<" eta: "<<tlv.Eta()<<" phi: "<<tlv.Phi()<<" E: "<<tlv.E()<<" mueff: "<<muEff<<endl;
 					//}
->>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 
 				}
 
@@ -1497,12 +1414,9 @@ void Correction::CalibrateJet(D3PDReader::JetD3PDObject * jet, Int_t dataYear, D
 
 			//	cout<<"Other Inputs calibration function";
 			//	cout<<" Eraw "<< Eraw;
-<<<<<<< HEAD
-=======
 			//	cout<<" eta_det "<< eta_det<<endl;;
 			//	cout<<" Eraw "<< Eraw;
 			//	cout<<" Eraw "<< Eraw;
->>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 			//	cout<<" Ax "<< Ax;
 			//	cout<<" Ay "<< Ay;
 			//	cout<<" Az "<< Az;
@@ -1526,12 +1440,7 @@ void Correction::CalibrateJet(D3PDReader::JetD3PDObject * jet, Int_t dataYear, D
 			//	cout<<" Pt: "<<(*jet)[i].pt();
 			//	cout<<" m: "<<(*jet)[i].m();
 			//	cout<<" E: "<<(*jet)[i].E();
-<<<<<<< HEAD
-			//	cout<<" mu: "<<mu;
-			//	cout<<" NPV: "<<NPV<<endl<<endl;
-=======
 			//	cout<<endl;
->>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 			//}
 
 			

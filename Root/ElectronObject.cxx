@@ -47,11 +47,7 @@ ElectronObject::ElectronObject(Int_t year, Bool_t tuseLikelihood)
 	Hist = 0;
 }
 
-<<<<<<< HEAD
-// Fill the initial vector with elon objects, Sets the type as well
-=======
 // Fill the intial vector with elon objects, Sets the type as well
->>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 void ElectronObject::FillElectron(D3PDReader::ElectronD3PDObject * el_branch, Int_t type, vector<Double_t> telSmearVal, vector<Double_t> elEff, vector<Double_t> elRes, vector<Double_t> elCLPt, Bool_t isMC)
 {
 	for(Int_t i = 0; i < el_branch->n(); i++)
@@ -90,11 +86,7 @@ void ElectronObject::FillElectron(D3PDReader::ElectronD3PDObject * el_branch, In
 // Perfroms the Electron cut by calling the right funtion for the type
 Bool_t ElectronObject::ElectronCut(Int_t *cutElPass, Int_t Npv, Bool_t useRelaxedLoose)
 {
-<<<<<<< HEAD
-	// Check if Hist are initialized
-=======
 	// Check if Hist are intilaized
->>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 	if(Hist == 0)
 	{
 		cout<<"Electron Histogram Not Init"<<endl;
@@ -308,11 +300,7 @@ Bool_t ElectronObject::OverlapEECC(D3PDReader::ElectronD3PDObjectElement *el_cur
 
 
 /////////////////////////////////////////////////////////////////////////////////
-<<<<<<< HEAD
-//						Helper Functions
-=======
 //						Helper Funtions
->>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 /////////////////////////////////////////////////////////////////////////////////
 // Just to calculate DeltaR
 Double_t ElectronObject::DeltaR (Double_t eta_1, Double_t phi_1, Double_t eta_2, Double_t phi_2)

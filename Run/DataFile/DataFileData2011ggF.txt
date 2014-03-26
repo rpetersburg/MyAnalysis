@@ -1,1 +1,0 @@
-/afs/cern.ch/work/s/sabidi/public/Data/mc11_7TeV.169496.PowHegPythia_ggH126_ZZ4lep.merge.NTUP_HSG2.e1719_s1372_s1370_r3108_r3109_p1486_tid01249268_00/NTUP_HSG2.01249268._00000*.root.1

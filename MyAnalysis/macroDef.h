@@ -13,15 +13,9 @@
 #define period2012_All "period2012_All"
 
 // Z mass
-<<<<<<< HEAD
-#define pdgZMass 91187.6 
-#define pdgMuMass 105.65836
-#define pdgElMass 0.510998910
-=======
 #define pdgZMass  91187.6 
 #define pdgMuMass 105.6583715
 #define pdgElMass 0.510998928
->>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 
 namespace doAnalysis{
 	enum{

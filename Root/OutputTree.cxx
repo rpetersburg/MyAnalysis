@@ -5,11 +5,7 @@
 
 using namespace std;
 ////////////////////////////////////////////////////////////////////////////////////////
-<<<<<<< HEAD
-//				Constructor and Destructor
-=======
 //				Constructor and Festructor
->>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 ////////////////////////////////////////////////////////////////////////////////////////
 OutputTree::OutputTree()
 {
@@ -128,10 +124,7 @@ void OutputTree::clearVars()
 	tpt4l_truth_born = -999;
 	ty4l_truth_born = -999;
 	teta4l_truth_born = -999;
-<<<<<<< HEAD
-=======
 	tphi4l_truth_born = -999;
->>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 	tm4l_truth_born = -999;
 
 	tZ1_lepplus_pt = -999;
@@ -154,13 +147,10 @@ void OutputTree::clearVars()
 	tZ1_lepminus_id = -999;
 	tZ2_lepplus_id = -999;
 	tZ2_lepminus_id = -999;
-<<<<<<< HEAD
-=======
 	tZ1_lepplus_turthParent = -999;
 	tZ1_lepminus_turthParent = -999;
 	tZ2_lepplus_turthParent = -999;
 	tZ2_lepminus_turthParent = -999;
->>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 
 	tZ1_lepplus_pt_truth = -999;
 	tZ1_lepminus_pt_truth = -999;
@@ -307,10 +297,6 @@ void OutputTree::clearVars()
 		tElID[i] 			= -999;
 	}
 	tflagQuad = -999;	
-<<<<<<< HEAD
-}
-
-=======
 
 	tBCHCutMedium = -999;
 	tBCHCutTight = -999;
@@ -318,7 +304,6 @@ void OutputTree::clearVars()
 
 
 
->>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 void OutputTree::bookTree(TTree *tree)
 {
 	//cout<<"Booking Tree: "<<tree->getName() <<endl;
@@ -369,10 +354,7 @@ void OutputTree::bookTree(TTree *tree)
 	tree->Branch("pt4l_truth_born" , 						&tpt4l_truth_born ,       				"pt4l_truth_born/F"  	); 
 	tree->Branch("y4l_truth_born" , 						&ty4l_truth_born ,       				"y4l_truth_born/F"  	); 
 	tree->Branch("eta4l_truth_born" , 						&teta4l_truth_born ,       				"eta4l_truth_born/F"  	); 
-<<<<<<< HEAD
-=======
 	tree->Branch("phi4l_truth_born" , 						&tphi4l_truth_born ,       				"phi4l_truth_born/F"  	); 
->>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 	tree->Branch("m4l_truth_born" , 						&tm4l_truth_born ,       				"m4l_truth_born/F"  	);
 
 	tree->Branch("Z1_lepplus_pt" , 							&tZ1_lepplus_pt ,           			"Z1_lepplus_pt/F"  		);	
@@ -402,14 +384,11 @@ void OutputTree::bookTree(TTree *tree)
 	tree->Branch("Z2_lepplus_id" , 							&tZ2_lepplus_id ,            			"Z2_lepplus_id/I"  		);	
 	tree->Branch("Z2_lepminus_id" , 						&tZ2_lepminus_id ,           			"Z2_lepminus_id/I"  	);
 
-<<<<<<< HEAD
-=======
 	tree->Branch("Z1_lepplus_turthParent" , 				&tZ1_lepplus_turthParent ,           	"Z1_lepplus_turthParent/I"  	);	
 	tree->Branch("Z1_lepminus_turthParent" , 				&tZ1_lepminus_turthParent ,    			"Z1_lepminus_turthParent/I"  	);	
 	tree->Branch("Z2_lepplus_turthParent" , 				&tZ2_lepplus_turthParent ,     			"Z2_lepplus_turthParent/I"  	);	
 	tree->Branch("Z2_lepminus_turthParent" , 				&tZ2_lepminus_turthParent ,    			"Z2_lepminus_turthParent/I"  	);
 
->>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 	tree->Branch("Z1_lepplus_pt_uncorr" , 					&tZ1_lepplus_pt_uncorr ,  	         	"Z1_lepplus_pt_uncorr/F"  	);	
 	tree->Branch("Z1_lepminus_pt_uncorr" , 					&tZ1_lepminus_pt_uncorr , 	         	"Z1_lepminus_pt_uncorr/F"  	);	
 	tree->Branch("Z2_lepplus_pt_uncorr" , 					&tZ2_lepplus_pt_uncorr ,  	         	"Z2_lepplus_pt_uncorr/F" 	);	
@@ -529,10 +508,6 @@ void OutputTree::bookTree(TTree *tree)
 	tree->Branch("subleading_additional_lepton_type" , 		&tsubleading_additional_lepton_type ,  	"subleading_additional_lepton_type/I"  	);
 	tree->Branch("subleading_additional_lepton_type_truth_matched_bare" , &tsubleading_additional_lepton_type_truth_matched_bare ,"subleading_additional_lepton_type_truth_matched_bare/I");
 
-<<<<<<< HEAD
-
-=======
->>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 	tree->Branch("n_jets_fid" , 							&tn_jets_fid ,      					"n_jets_fid/I"   				);		
 	tree->Branch("leading_jet_pt_fid" , 					&tleading_jet_pt_fid ,      			"leading_jet_pt_fid/F"   		);	
 	tree->Branch("n_jets_truth_fid" , 						&tn_jets_truth_fid ,      				"n_jets_truth_fid/I"   			);		
@@ -562,13 +537,10 @@ void OutputTree::bookTree(TTree *tree)
 	tree->Branch("ElID" , 									&tElID ,        	   					"tElID[4]/O"  		);
 
 	tree->Branch("flagQuad" , 								&tflagQuad ,           					"flagQuad/I"  			);	
-<<<<<<< HEAD
-=======
 
 	tree->Branch("BCHCutMedium" , 							&tBCHCutMedium ,      					"BCHCutMedium/I"   );		
 	tree->Branch("BCHCutTight" , 							&tBCHCutTight ,      					"BCHCutTight/I"   );		
 	
->>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 }
 
 void OutputTree::fillTree(D3PDReader::Event *event, QuadLepton * higgs, Int_t type, Bool_t isMC)
@@ -623,10 +595,7 @@ void OutputTree::fillTree(D3PDReader::Event *event, QuadLepton * higgs, Int_t ty
 		tpt4l_truth_born 		= higgs->truthVec.Pt()/1000;
 		ty4l_truth_born 		= higgs->truthVec.Rapidity();
 		teta4l_truth_born 		= higgs->truthVec.Eta();
-<<<<<<< HEAD
-=======
 		tphi4l_truth_born 		= higgs->truthVec.Phi();
->>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 		tm4l_truth_born 		= higgs->truthVec.M()/1000;
 	}
 	tZ1_lepplus_pt		= higgs->getZ1()->getLepPlus()->get4Momentum()->Pt()/1000;
@@ -653,16 +622,12 @@ void OutputTree::fillTree(D3PDReader::Event *event, QuadLepton * higgs, Int_t ty
 	tZ1_lepminus_id 	= (Int_t) higgs->getZ1()->getLepNeg()->lepID;
 	tZ2_lepplus_id 		= (Int_t) higgs->getZ2()->getLepPlus()->lepID;
 	tZ2_lepminus_id 	= (Int_t) higgs->getZ2()->getLepNeg()->lepID;
-<<<<<<< HEAD
-	
-=======
 
 	tZ1_lepplus_turthParent 	= (Int_t) higgs->getZ1()->getLepPlus()->truthParentType;
 	tZ1_lepminus_turthParent 	= (Int_t) higgs->getZ1()->getLepNeg()->truthParentType;
 	tZ2_lepplus_turthParent 	= (Int_t) higgs->getZ2()->getLepPlus()->truthParentType;
 	tZ2_lepminus_turthParent 	= (Int_t) higgs->getZ2()->getLepNeg()->truthParentType;
 
->>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 	tZ1_lepplus_cov_mom  	= higgs->getZ1()->getLepPlus()->covMomErr;
 	tZ1_lepminus_cov_mom  	= higgs->getZ1()->getLepNeg()->covMomErr;
 	tZ2_lepplus_cov_mom  	= higgs->getZ2()->getLepPlus()->covMomErr;
@@ -754,10 +719,7 @@ void OutputTree::fillTree(D3PDReader::Event *event, QuadLepton * higgs, Int_t ty
 		tleading_jet_m			= higgs->leadingJet->get4Momentum()->M()/1000;
 		tleading_jet_width		= higgs->leadingJet->GetJets()->WIDTH();
 		tleading_jet_nTrk		= higgs->leadingJet->GetJets()->nTrk();
-<<<<<<< HEAD
-=======
 		//cout<<"Output: Leading_jet_m "<<tleading_jet_m<<endl;
->>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 	}
 	if(higgs->subLeadingJet)
 	{
@@ -832,11 +794,7 @@ void OutputTree::fillTree(D3PDReader::Event *event, QuadLepton * higgs, Int_t ty
 	tptSysdownFac			= higgs->ptSysdownFac;
 
 	// For Category
-<<<<<<< HEAD
-	tmissing_et = event->MET_RefFinal.et();
-=======
 	tmissing_et = event->MET_RefFinal.et()/1000;
->>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 	if(higgs->leadingExtraLep)
 	{
 		tleading_additional_lepton_pt 		= higgs->leadingExtraLep->get4Momentum()->Pt()/1000;
@@ -878,15 +836,12 @@ void OutputTree::fillTree(D3PDReader::Event *event, QuadLepton * higgs, Int_t ty
 		tElID[i]		= higgs->looseElectron[i];
 	}
 
-<<<<<<< HEAD
-=======
 	tBCHCutMedium = higgs->BCHCutMedium;
 	tBCHCutTight = higgs->BCHCutTight;
 
 	//cout<<"Ouput BCH Medium "<<tBCHCutMedium<<endl;
 	//cout<<"Ouput BCH tight "<<tBCHCutTight<<endl;
 
->>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 	// Filling the tree
 	if(type == analysisType::Mu4) mu4Tree->Fill();
 	else if(type == analysisType::El4) el4Tree->Fill();

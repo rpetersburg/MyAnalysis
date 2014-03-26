@@ -4,20 +4,12 @@ cd ../../../
 
 export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
 source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh
-<<<<<<< HEAD
-localSetupDQ2Client --skipConfirm 
-#source /afs/cern.ch/atlas/offline/external/GRID/ddm/DQ2Clients/setup.sh
-source /afs/cern.ch/atlas/offline/external/GRID/DA/panda-client/latest/etc/panda/panda_setup.sh 
-voms-proxy-init -valid 48:00 --voms atlas:/atlas/phys-higgs/Role=production -pwstdin < ~/.pas
-
-=======
 
 voms-proxy-init -valid 48:00 --voms atlas:/atlas/phys-higgs/Role=production -pwstdin < ~/.pas
 
 localSetupDQ2Client --skipConfirm 
 #source /afs/cern.ch/atlas/offline/external/GRID/ddm/DQ2Clients/setup.sh
 source /afs/cern.ch/atlas/offline/external/GRID/DA/panda-client/latest/etc/panda/panda_setup.sh 
->>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 
 cd MyAnalysis/Run/RunScript
 

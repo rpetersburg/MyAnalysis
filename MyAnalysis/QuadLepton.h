@@ -177,15 +177,11 @@ class QuadLepton
 		Float_t ptSysdownFac;
 
 		// NPV
-<<<<<<< HEAD
-		Int_t npv;		
-=======
 		Int_t npv;	
 
 		// BCHCut
 		Int_t BCHCutMedium;
 		Int_t BCHCutTight;
->>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 		
 		// Type of calibariton
 		Int_t calib;

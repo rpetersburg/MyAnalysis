@@ -117,11 +117,7 @@ class ChargedLepton
 		
 		Double_t getLepEff(){return lepEff;}
 
-<<<<<<< HEAD
-		// For Filling the Covariance Matrix	
-=======
 		// For Filling the Covariance Martix	
->>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 		void SetElRescale(AtlasRoot::egammaEnergyCorrectionTool *telRescale){elRescale = telRescale;}
 
 		void FillCovMatrix(Int_t runNumber_sf);

@@ -96,10 +96,7 @@ void runAnalysisGrid(Bool_t useNewGeo = false)
 
 	// Initialzing the cutFlow
 	HiggsAnalysis *cutFlow = new HiggsAnalysis(phyData, true, readFileName("inputName.txt"), useNewGeo, doAnalysis::StdHZZllll);
-<<<<<<< HEAD
-=======
 	//HiggsAnalysis *cutFlow = new HiggsAnalysis(phyData, true, readFileName("inputName.txt"), useNewGeo, doAnalysis::Zllll);
->>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 	//HiggsAnalysis *cutFlow = new HiggsAnalysis(phyData, true, readFileName("inputName.txt"), useNewGeo, doAnalysis::trigeff4l);
 
 	cutFlow->runningGrid = true;
