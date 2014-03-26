@@ -93,6 +93,10 @@ class OutputTree
 		Float_t tpt4l_truth_born;
 		Float_t ty4l_truth_born;
 		Float_t teta4l_truth_born;
+<<<<<<< HEAD
+=======
+		Float_t tphi4l_truth_born;
+>>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 		Float_t tm4l_truth_born;
 
 		// Reco lepton information
@@ -116,6 +120,15 @@ class OutputTree
 		Int_t tZ1_lepminus_id;
 		Int_t tZ2_lepplus_id;
 		Int_t tZ2_lepminus_id;
+<<<<<<< HEAD
+=======
+
+		Int_t tZ1_lepplus_turthParent;
+		Int_t tZ1_lepminus_turthParent;
+		Int_t tZ2_lepplus_turthParent;
+		Int_t tZ2_lepminus_turthParent;
+
+>>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 		Float_t tZ1_lepplus_cov_mom;
 		Float_t tZ1_lepminus_cov_mom;
 		Float_t tZ2_lepplus_cov_mom;
@@ -275,6 +288,13 @@ class OutputTree
 		Bool_t 	tElID[4];
 
 		Float_t tflagQuad;
+<<<<<<< HEAD
+=======
+
+		Int_t tBCHCutMedium;
+		Int_t tBCHCutTight;
+		
+>>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 };
 
 #endif

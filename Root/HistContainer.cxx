@@ -45,7 +45,11 @@ HistContainer::HistContainer(Int_t nCut, Int_t nMuCut, Int_t nElCut, Int_t nJets
 	cut2L2LPassHistW = new TH1D("cut2L2LPassHistWeight", "cut2L2LPassHistWeight;CutNum;Events", nCH, 0, nCH);
 	cutlleePassHistW = new TH1D("cutlleePassHistWeight", "cutlleePassHistWeight;CutNum;Events", nCH, 0, nCH);
 
+<<<<<<< HEAD
 	// Muon Histogram
+=======
+	// Muon Histrogram
+>>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 	muAuthorHist = new TH1D *[3];
 	muPTHist = new TH1D *[3];
 	muEtaHist = new TH1D *[3];
@@ -63,7 +67,11 @@ HistContainer::HistContainer(Int_t nCut, Int_t nMuCut, Int_t nElCut, Int_t nJets
 		muOverlapHist[i] = new TH1D("overlapHist"+muName[i], "overlapHist"+muName[i]+";DeltaR;Event", 50, 0, 5);
 	}
 
+<<<<<<< HEAD
 	// Electron Histogram
+=======
+	// Electron Histrogram
+>>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 	elAuthorHist = new TH1D("authorHistElGFS", "authorHistElGFS;Author;Event", 20, 0, 20);
 	elETHist = new TH1D("ETHistElGFS", "ETHistElGFS;pT[Mev];Event", 100, 0, 250*1000);;
 	elEtaHist = new TH1D("etaHistElGFS", "etaHistElGFS;eta;Event", 50, -4, 4);
@@ -205,7 +213,11 @@ void HistContainer::SaveHist(TFile *output, TString fileNamePart, TH1F* counting
 {
 	
 	truthQuadHist->Write();
+<<<<<<< HEAD
 	// Saving the Counting Histograms
+=======
+	// Saving the Counting Histrograms
+>>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 	output->mkdir("Counting");
 	output->cd("Counting");
 	cutPassHist->Write();

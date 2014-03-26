@@ -1,7 +1,11 @@
 10
 
 dir
+<<<<<<< HEAD
 72
+=======
+78
+>>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 svn+ssh://svn.cern.ch/reps/atlas-sabidi/trunk/MyAnalysis/Run/InputFile
 svn+ssh://svn.cern.ch/reps/atlas-sabidi
 

@@ -28,7 +28,11 @@ MuonObject::~MuonObject()
 
 }
 
+<<<<<<< HEAD
 // Fill the initial vector with muon objects, Sets the type as well
+=======
+// Fill the intial vector with muon objects, Sets the type as well
+>>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 void MuonObject::FillMuon(D3PDReader::MuonD3PDObject * mu_branch, Int_t type, vector<Double_t> muEff, Bool_t isMC)
 {
 	for(Int_t i = 0; i < mu_branch->n(); i++)
@@ -45,7 +49,11 @@ void MuonObject::FillMuon(D3PDReader::MuonD3PDObject * mu_branch, Int_t type, ve
 		cout<<"--------------------------------------"<<endl;
 	}
 }
+<<<<<<< HEAD
 // Performs the Muon cut by calling the right function for the type
+=======
+// Perfroms the Muon cut by calling the right funtion for the type
+>>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 Bool_t MuonObject::MuonCut(Int_t *cutMuPass)
 {
 	muBfOverlap.clear();
@@ -53,7 +61,11 @@ Bool_t MuonObject::MuonCut(Int_t *cutMuPass)
 	// Check for the Hist
 	if(Hist == 0) 
 	{
+<<<<<<< HEAD
 		cout<<"Muon Histogram not Set";
+=======
+		cout<<"Muon Histrogram not Set";
+>>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 		return false;
 	}
 	for(vector<ChargedLepton *>::iterator itr = muInitEvent.begin();

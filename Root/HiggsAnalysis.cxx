@@ -25,8 +25,12 @@
 //				Constructor and Destructor
 ////////////////////////////////////////////////////////////////////////////////////////
 HiggsAnalysis::HiggsAnalysis (TTree *phyObject, Bool_t tRunningGrid, TString tgridFileName, Bool_t tUseNewGeoData, Int_t tAnaType)
+<<<<<<< HEAD
 {	
 
+=======
+{
+>>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 	// Reading the TTree
 	event = new D3PDReader::Event();
 	physicsTree = phyObject;
@@ -86,7 +90,11 @@ HiggsAnalysis::HiggsAnalysis (TTree *phyObject, Bool_t tRunningGrid, TString tgr
 	// Overwrites the above decision based on stream name
 	fillStreamAnalysis();
 
+<<<<<<< HEAD
 	// Setup the analysis
+=======
+	// Setup the analyis
+>>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 	doCorr 		= true;
 	doWeight 	= true;
 
@@ -198,16 +206,29 @@ HiggsAnalysis::HiggsAnalysis (TTree *phyObject, Bool_t tRunningGrid, TString tgr
 	InitializeVar();
 
 
+<<<<<<< HEAD
 	// calling the initializing functions to setup the above vars
+=======
+	// calling the initalizing funtions to setup the above vars
+>>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 	InitPileupTool();
 	InitZVertexTool();
 	InitGoodRunList();
 	InitTileTrip();
+<<<<<<< HEAD
+=======
+	InitBCHCleaning();
+>>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 	InitCategoryBDTTool();
 	InitBDTTool();
 	InitJHUReweight();
 	InitggFReweight();	
 	higgs_bror = new H4lBrRatio();
+<<<<<<< HEAD
+=======
+	
+	brCorr = new BRCorrection(mcRunNumber, is2012);
+>>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 
 	// Correction
 	// Init the class that contains all the function
@@ -219,7 +240,11 @@ HiggsAnalysis::HiggsAnalysis (TTree *phyObject, Bool_t tRunningGrid, TString tgr
 	corr->InitElectronSmear(electronCollection);
 	corr->InitJetCal();
 
+<<<<<<< HEAD
 	// Initializing the Hist
+=======
+	// Initialzing the Hist
+>>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 	Hist = new HistContainer(nCut, nMuCut, nElCut, nJetsCut, nCH);
 
 	// Init the lepton tools
@@ -237,7 +262,11 @@ HiggsAnalysis::HiggsAnalysis (TTree *phyObject, Bool_t tRunningGrid, TString tgr
 
 	// Output Tree
 	outputTree = new OutputTree();
+<<<<<<< HEAD
 	outputFilePath = "Output/output_giveFileNamePlease.root"; // Just in case the outside world didn't specify it
+=======
+	outputFilePath = "Output/output_giveFileNamePlease.root"; // Just incase the outside world didn't specify it
+>>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 	
 	outputTreeCR = new OutputTree();
 	outputTreelleeCR = new OutputTree();
@@ -245,7 +274,11 @@ HiggsAnalysis::HiggsAnalysis (TTree *phyObject, Bool_t tRunningGrid, TString tgr
 	if(doSysTree) outputTreeSys = new OutputTreeSys();
 	
 	
+<<<<<<< HEAD
 	// Initializing trigger matching
+=======
+	// Initialzing trigger matchin
+>>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
     InitTriggerMatchingToolMain(); 
 
 	// Print event list
@@ -322,6 +355,10 @@ HiggsAnalysis::~HiggsAnalysis ()
 	delete leptonSF;
 	delete zVertexTool;
 	delete TileTrip;
+<<<<<<< HEAD
+=======
+	delete thebchTool;
+>>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 	delete higgs_bror;
 	delete ggFReweight;
 	delete corr;
@@ -388,7 +425,11 @@ int HiggsAnalysis::AnalyzeTree()
 		TString outputFilePathSys = outputFilePath(0, outputFilePath.Length()-5) + "_Sys.root";
 		outputTreeSys->saveTrees(outputFilePathSys, countingHist, getSampleName());
 	}
+<<<<<<< HEAD
 	return countPassed;
+=======
+	return countPassed;	
+>>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 }
 
 // Analyze each event
@@ -396,10 +437,32 @@ int HiggsAnalysis::AnalyzeTreeEvent(int dataNumber)
 {
 	// Loading the event
 	if(dataNumber >= 0) event->GetEntry(dataNumber);
+<<<<<<< HEAD
 
 	// Getting the truth quad type
 	nTruthQuadType[getTruthQuadType()]++;
 	Hist->truthQuadHist->Fill(getTruthQuadType(), 1);
+=======
+	if(isDebugCall)
+	{
+		cout<<"------------"<<endl;
+		cout<<event->eventinfo.EventNumber()<<endl;
+		cout<<"------------"<<endl;
+		
+	}
+
+	//if(event->eventinfo.EventNumber() == 26077) isDebugCall = true;
+	//else isDebugCall = false;
+	// Getting the truth quad type
+	nTruthQuadType[getTruthQuadType()]++;
+	Hist->truthQuadHist->Fill(getTruthQuadType(), 1);
+	//Int_t trueT = brCorr->getTruthQuadType(event->mc.pdgId(), event->mc.status(), event->mc.child_index(),event->mc.parent_index());
+
+	//if(getTruthQuadType() != trueT)
+	//{
+	//	cout<<"Mismatch quadType: getTruthQuadType "<<getTruthQuadType()<<" trueT "<<trueT<<endl;
+	//}
+>>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 
 	// Printing the currentMC collection
 	if(isDebugCall || curEvent == 0)
@@ -407,6 +470,10 @@ int HiggsAnalysis::AnalyzeTreeEvent(int dataNumber)
 		cout << fixed;		
 		cout<<"--------------------------------------"<<endl;
 		if(curMCCollection == MCCollection::MC11c) cout<<"MC11c collection"<<endl;
+<<<<<<< HEAD
+=======
+		if(curMCCollection == MCCollection::MC11d) cout<<"MC11d collection"<<endl;
+>>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 		else if(curMCCollection == MCCollection::MC12a) cout<<"MC12a collection"<<endl;
 		else if(curMCCollection == MCCollection::MC12b) cout<<"MC12b collection"<<endl;
 		else if(curMCCollection == MCCollection::MC12c) cout<<"MC12c collection"<<endl;
@@ -421,7 +488,11 @@ int HiggsAnalysis::AnalyzeTreeEvent(int dataNumber)
 	Double_t eventWeight = 1.;
 	if(doWeight && isMC) eventWeight = eventWeight * getEventWeight();
 	
+<<<<<<< HEAD
 	// Filling the histogram for counting
+=======
+	// Filling the histrogram for counting
+>>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 	countingHist->Fill(1);
 	Double_t eventWeight_raw = eventWeight;
 	eventWeight_raw = eventWeight_raw/getJHUWeight();
@@ -438,7 +509,11 @@ int HiggsAnalysis::AnalyzeTreeEvent(int dataNumber)
 	cutJetsPass[cutJetsFlow::Total] += event->jet_akt4topoem.n();
 	Hist->cutPassHistW->Fill(cutFlow::Total, eventWeight);
 
+<<<<<<< HEAD
 	// Initializing the event Specific Variables
+=======
+	// Initalizing the event Specific Variables
+>>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 	InitializeEventVar();
 	getPeriodEvent();
 	Bool_t passCut = true;
@@ -469,8 +544,18 @@ int HiggsAnalysis::AnalyzeTreeEvent(int dataNumber)
 	{ 
 		pileupTool->SetRandomSeed(314159+event->eventinfo.mc_channel_number()*2718+event->eventinfo.EventNumber());
 		runNumber_sf = pileupTool->GetRandomRunNumber(event->eventinfo.RunNumber());
+<<<<<<< HEAD
 	}
 	else runNumber_sf = event->eventinfo.RunNumber();
+=======
+		lbn_sf = pileupTool->GetRandomLumiBlockNumber(runNumber_sf);
+	}
+	else 
+	{
+		runNumber_sf = event->eventinfo.RunNumber();
+		lbn_sf = event->eventinfo.lbn();
+	}
+>>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 	
 	// For Counting DiMuon Trigger
 	Bool_t passCut4Mu = SingleMuonTrigger(runNumber_sf) | DiMuonTrigger() ;
@@ -511,13 +596,21 @@ int HiggsAnalysis::AnalyzeTreeEvent(int dataNumber)
 	fillMuonHelperVars();
 
 	// Smearing
+<<<<<<< HEAD
 	if(isDebugCall) printMuonInfo();
+=======
+	//if(isDebugCall) printMuonInfo();
+>>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 	if(isDebugCall) corr->debugCall();
 	if(doCorr && doSmearD0Z0 && isMC) corr->SmearD0Z0(&(event->mu_staco), event->eventinfo.EventNumber(), leptonType::MuonStaco);
 	if(doCorr && doSmearD0Z0 && isMC) corr->SmearD0Z0(&(event->mu_calo), event->eventinfo.EventNumber(), leptonType::MuonCalo);
 	if((doCorr && doSmearMC) || doScaleData) corr->SmearMuon(&(event->mu_calo), event->eventinfo.EventNumber(), leptonType::MuonCalo);
 	if((doCorr && doSmearMC) || doScaleData) corr->SmearMuon(&(event->mu_staco), event->eventinfo.EventNumber(), leptonType::MuonStaco);
+<<<<<<< HEAD
 	if(isDebugCall) printMuonInfo();
+=======
+	//if(isDebugCall) printMuonInfo();
+>>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 
 	// getting the Eff values
 	if(doWeight && doScaleEfficiency) 
@@ -665,6 +758,20 @@ int HiggsAnalysis::AnalyzeTreeEvent(int dataNumber)
 	// Removing the overlap
 	RemoveOverlap();
 
+<<<<<<< HEAD
+=======
+	temp_BCHCutMedium = false;
+	temp_BCHCutTight = false;
+	passCut = BCHCut();
+	passCut = true;
+	//if(isDebugCall)
+	//{
+	//	cout<<"BCH cut: "<<passCut<<endl;
+	//}
+
+	//if(temp_BCHCutTight) return false;
+
+>>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 	// Channel Specific Cuts
 	Bool_t pass4MuCut = false;
 	Bool_t pass4ElCut = false;
@@ -710,12 +817,20 @@ int HiggsAnalysis::AnalyzeTreeEvent(int dataNumber)
 	return passCut;
 }
 ////////////////////////////////////////////////////////////////////////////////////////
+<<<<<<< HEAD
 // 			Channel specific cutflow
+=======
+// 			Channel specfic cutflow
+>>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 //		all Function return 1 or true if event passed the cut
 ////////////////////////////////////////////////////////////////////////////////////////
 Bool_t HiggsAnalysis::CutFlow4Mu(Double_t weight)
 {
+<<<<<<< HEAD
 	// Counting the initial events
+=======
+	// Counting the inital events
+>>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 	cut4MuPass[cutFlowCH::Total]++;
 	Hist->cut4MuPassHistW->Fill(cutFlowCH::Total, weight);
 
@@ -762,7 +877,11 @@ Bool_t HiggsAnalysis::CutFlow4Mu(Double_t weight)
 	
 	//fillEventVarInfo(higgsCandidate4Mu, analysisType::Mu4, prodCH4Mu);
 
+<<<<<<< HEAD
 	// Filling Histogram
+=======
+	// Filling Histrogram
+>>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 	Hist->hist4MuMUnconstrained->Fill(higgsCandidate4Mu->getMass(), Hist->weight);
 	Hist->hist4MuMFSR->Fill(higgsCandidate4Mu->getMassFSR(), Hist->weight);
 	Hist->hist4MuMConstrained->Fill(higgsCandidate4Mu->getMassZMassCons(), Hist->weight);
@@ -1029,12 +1148,26 @@ void HiggsAnalysis::fillEventVarInfo(QuadLepton * higgs, Int_t type, Int_t *prod
 	if(isDebugCall | printWeight)
 	{
 		cout<<"----------------"<<endl;
+<<<<<<< HEAD
 		cout<<"Higgs Mass: "<< higgs->getMass()<<endl;
 		cout<<"Higgs Mass err: "<< higgs->getMassErr()<<endl;
 		cout<<"Higgs FSR Mass: "<<higgs->getMassFSR()<<endl;
 		cout<<"Higgs FSR Mass err: "<<higgs->getMassErrFSR()<<endl;
 		cout<<"Higgs Constrained Mass: "<<higgs->getMassZMassCons()<<endl;		
 		cout<<"Higgs Constrained Mass err: "<<higgs->getMassErrZMassCons()<<endl;
+=======
+		cout<<"m4l: "<< higgs->getMass()/1000<<endl;
+		cout<<"mZ1: "<< higgs->getZ1()->get4Momentum()->M()/1000<<endl;
+		cout<<"mZ2: "<< higgs->getZ2()->get4Momentum()->M()/1000<<endl;		
+		cout<<"m4l_err: "<< higgs->getMassErr()/1000<<endl;
+		cout<<"m4l + fsr: "<<higgs->getMassFSR()/1000<<endl;
+		cout<<"m4l_err + fsr: "<<higgs->getMassErrFSR()/1000<<endl;
+		cout<<"m4l_constrained: "<<higgs->getMassZMassCons()/1000<<endl;		
+		cout<<"m4lerr_constrained: "<<higgs->getMassErrZMassCons()/1000<<endl;
+		cout<<"mZ1_constrained: "<< higgs->getZ1MassZMassCons()/1000<<endl;
+		cout<<"mZ2_constrained: "<< higgs->getZ2MassZMassCons()/1000<<endl;	
+		cout<<endl;
+>>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 		cout<<"m4l_unconstrained_ID 	"<<higgs->massID/1000<<endl;
 		cout<<"m4lerr_unconstrained_ID 	"<<higgs->massErrID/1000<<endl;
 		cout<<"m4l_constrained_ID 		"<<higgs->massZMassConsID/1000<<endl;
@@ -1060,7 +1193,35 @@ void HiggsAnalysis::fillEventVarInfo(QuadLepton * higgs, Int_t type, Int_t *prod
 					&higgs->cth1,
 					&higgs->cth2,
 					&higgs->phi);
+<<<<<<< HEAD
 	
+=======
+
+
+	if(isDebugCall)
+	{
+		cout<<std::setprecision(15);
+		cout<<"-------------------------"<<endl;
+		cout<<"Spin Vars"<<endl;
+		TLorentzVector temp = higgs->getZ1()->getLepPlus()->get4MomentumNoP();
+		cout<<"Z1Lep Plus Pt: "<<temp.Pt()/1000<<" eta: "<<temp.Eta()<<" Phi: "<<temp.Phi()<<" E: "<<temp.E()/1000<<" M: "<<temp.M()/1000<<endl;
+		temp = higgs->getZ1()->getLepNeg()->get4MomentumNoP();
+		cout<<"Z1Lep Neg Pt: "<<temp.Pt()/1000<<" eta: "<<temp.Eta()<<" Phi: "<<temp.Phi()<<" E: "<<temp.E()/1000<<" M: "<<temp.M()/1000<<endl;
+		temp = higgs->getZ2()->getLepPlus()->get4MomentumNoP();
+		cout<<"Z2Lep Plus Pt: "<<temp.Pt()/1000<<" eta: "<<temp.Eta()<<" Phi: "<<temp.Phi()<<" E: "<<temp.E()/1000<<" M: "<<temp.M()/1000<<endl;
+		temp = higgs->getZ2()->getLepNeg()->get4MomentumNoP();
+		cout<<"Z2Lep Neg Pt: "<<temp.Pt()/1000<<" eta: "<<temp.Eta()<<" Phi: "<<temp.Phi()<<" E: "<<temp.E()/1000<<" M: "<<temp.M()/1000<<endl;
+
+		cout<<"cthstr: "<<higgs->cthstr<<endl;
+		cout<<"phi1: "<<higgs->phi1<<endl;
+		cout<<"cth1: "<<higgs->cth1<<endl;
+		cout<<"cth2: "<<higgs->cth2<<endl;
+		cout<<"phi: "<<higgs->phi<<endl<<endl;
+
+		cout<<"-------------------------"<<endl;
+	}
+
+>>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 	// Truth fill
 	if(generatorName == MCGeneratorName::Pythia) fillTruthRecoMatchedInfo(higgs);
 
@@ -1092,9 +1253,30 @@ void HiggsAnalysis::fillEventVarInfo(QuadLepton * higgs, Int_t type, Int_t *prod
 	// Calibration type
 	higgs->calib = curCalibration;
 
+<<<<<<< HEAD
 }
 // Choose all the quadleptons that are closest to zPDG and are loose electrons
 // plus removes event that are overlapping in etaphi electrons
+=======
+	//Truth Mother trype for reco  electron
+	fillExtraLepParent(higgs->getZ1()->getLepPlus());
+	fillExtraLepParent(higgs->getZ1()->getLepNeg());
+	fillExtraLepParent(higgs->getZ2()->getLepPlus());
+	fillExtraLepParent(higgs->getZ2()->getLepNeg());
+
+	higgs->BCHCutMedium =  temp_BCHCutMedium;
+	higgs->BCHCutTight  =  temp_BCHCutTight;
+
+	//cout<<"eventNumber: "<<event->eventinfo.EventNumber()<<endl;
+	//cout<<"Higgs BCH Cut Medium: "<<higgs->BCHCutMedium<<endl;
+	//cout<<"Higgs BCH Cut tight: "<<higgs->BCHCutTight<<endl;
+	//cout<<"BCH Cut Medium: "<<temp_BCHCutMedium<<endl;
+	//cout<<"BCH Cut tight: "<<temp_BCHCutTight<<endl;
+
+}
+// Choose all the quadleptons that are closest to zPDG and are loose electrons
+// plus removes event that are overlaping in etaphi electrons
+>>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 vector<QuadLepton*> HiggsAnalysis::cutClosestZ1(vector<QuadLepton*> higgsContainer)
 {
 	vector<QuadLepton *> z1Overlap;
@@ -1346,9 +1528,15 @@ void HiggsAnalysis::fillLooseCut(QuadLepton* higgs)
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////
+<<<<<<< HEAD
 //			Initialize the variables and Selector Tools
 ////////////////////////////////////////////////////////////////////////////////////////
 // Initializes the variable for the each event
+=======
+//			Intialize the variables and Selector Tools
+////////////////////////////////////////////////////////////////////////////////////////
+// Initalizes the variable for the each event
+>>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 void HiggsAnalysis::InitializeEventVar()
 {	
 	// Checking if MC or Data
@@ -1360,12 +1548,20 @@ void HiggsAnalysis::InitializeEventVar()
 	{
  		dataYear = 2011;
    		CM_E = 7.0;
+<<<<<<< HEAD
+=======
+		is2012 = false;
+>>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 		//curMCCollection = MCCollection::MC11c;
   	}
 	else if (event->eventinfo.RunNumber()>191933 )
 	{
    		dataYear = 2012;
    		CM_E = 8.0;
+<<<<<<< HEAD
+=======
+		is2012 = true;
+>>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 		//if(event->eventinfo.RunNumber() == 195847) curMCCollection = MCCollection::MC12a;
 		//else if(event->eventinfo.RunNumber() == 195848) curMCCollection = MCCollection::MC12b;
 		//else if(!isMC) curMCCollection = MCCollection::MC12a;
@@ -1510,10 +1706,29 @@ void HiggsAnalysis::InitGoodRunList()
 // TileTrip
 void HiggsAnalysis::InitTileTrip()
 {
+<<<<<<< HEAD
 	TileTrip=new Root::TTileTripReader("TripReader");
 	TileTrip->setTripFile("../../TileTripReader/data/CompleteTripList_2011-2012.root>" );
 }
 
+=======
+	cout<<"Initializing TTileTripReader"<<endl;	
+	TileTrip=new Root::TTileTripReader("TripReader");
+	TileTrip->setTripFile("../../TileTripReader/data/CompleteTripList_2011-2012.root" );
+}
+
+// BCHCleaning
+void HiggsAnalysis::InitBCHCleaning()
+{
+	cout<<"Initializing BCHCleaningTool"<<endl;	
+	thebchTool = new BCHTool::BCHCleaningToolRoot();
+	thebchTool->InitializeTool(!isMC , TileTrip, "share/FractionsRejectedJetsMC.root");
+	thebchToolMedium = new BCHTool::BCHCleaningToolRoot();
+	thebchToolMedium->InitializeTool(!isMC , TileTrip, "share/FractionsRejectedJetsMC.root");
+}
+
+
+>>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 // ggF Reweighing
 void HiggsAnalysis::InitggFReweight()
 {
@@ -1568,7 +1783,11 @@ void HiggsAnalysis::InitCategoryBDTTool()
 	BDT_discriminant_HadVH = -999;
 
 	cout<<"Initialzing the CategoriesDiscriminantTool"<<endl<<endl;
+<<<<<<< HEAD
 	CategoriesDiscriminantTool = new CategoriesMVA("../../CategoriesMVA/weights");
+=======
+	CategoriesDiscriminantTool = new CategoriesMVA("../../CategoriesMVA/weights", is2012);
+>>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 
 	CategoriesDiscriminantTool->ConnectVariables  (dijet_invmass, dijet_deltaeta, leading_jet_pt, leading_jet_eta, subleading_jet_pt);
 	
@@ -1596,7 +1815,11 @@ void HiggsAnalysis::InitJHUReweight()
 }
 
 
+<<<<<<< HEAD
 // Helper for initializing
+=======
+// Helper for initialzing
+>>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 void HiggsAnalysis::getPeriodEvent()
 {
 	Int_t nRunTemp = event->eventinfo.RunNumber();
@@ -1673,6 +1896,91 @@ Int_t HiggsAnalysis::getNVertex(Int_t nCutVertex)
 	return nVertex;
 }
 
+<<<<<<< HEAD
+=======
+Bool_t HiggsAnalysis::BCHCut()
+{
+
+	temp_BCHCutMedium = false;
+	temp_BCHCutTight = false;
+
+	if(dataYear != 2012) return true;
+
+	Int_t currRunNumber = runNumber_sf;
+	Int_t currlbn = lbn_sf;
+
+	if(isDebugCall)
+	{
+		cout<<"------------------"<<endl;
+		cout<<"Jet Veto Information"<<endl;
+		cout<<"Event Number: "<<event->eventinfo.EventNumber()<<endl;
+		cout<<"RunNumber: "<<currRunNumber<<endl;
+		cout<<"currlbn: "<<currlbn<<endl;
+	}
+	
+	if(isMC) thebchTool->SetSeed(314159+event->eventinfo.mc_channel_number()*2718+event->eventinfo.EventNumber());
+	
+	for(Int_t i = 0; i < (Int_t)jetsEvent.size(); i++)
+	{
+
+		Bool_t cutVal = false;
+
+
+		Bool_t mediumCutVal = thebchTool->IsBadMediumBCH(currRunNumber, currlbn, jetsEvent[i]->get4Momentum()->Eta(),jetsEvent[i]->get4Momentum()->Phi(),
+				 jetsEvent[i]->GetJets()->BCH_CORR_CELL(), jetsEvent[i]->GetJets()->emfrac(), jetsEvent[i]->get4Momentum()->Pt(), 0);
+
+		if(mediumCutVal) temp_BCHCutMedium = true;
+
+
+		if(isDebugCall)
+		{
+			cout<<"Jet i: "<<i<<endl;
+			cout<<"eta: "<<jetsEvent[i]->get4Momentum()->Eta()<<endl;
+			cout<<"phi: "<<jetsEvent[i]->get4Momentum()->Phi()<<endl;
+			cout<<"BCH_CORR: "<<jetsEvent[i]->GetJets()->BCH_CORR_CELL()<<endl;
+			cout<<"emFrac: "<<jetsEvent[i]->GetJets()->emfrac()<<endl;
+			cout<<"pt: "<<jetsEvent[i]->get4Momentum()->Pt()<<endl;
+			cout<<"Medium cut: "<<mediumCutVal<<endl;
+
+		}
+	}
+	for(Int_t i = 0; i < (Int_t)jetsEvent.size(); i++)
+	{
+
+		Bool_t cutVal = false;
+		
+		Bool_t tightCutVal = thebchTool->IsBadTightBCH(currRunNumber, currlbn, jetsEvent[i]->get4Momentum()->Eta(),jetsEvent[i]->get4Momentum()->Phi(),
+				 jetsEvent[i]->GetJets()->BCH_CORR_CELL(), jetsEvent[i]->GetJets()->emfrac(), jetsEvent[i]->get4Momentum()->Pt());
+
+		if(tightCutVal) temp_BCHCutTight = true;
+
+
+		if(isDebugCall)
+		{
+			cout<<"Jet i: "<<i<<endl;
+			cout<<"eta: "<<jetsEvent[i]->get4Momentum()->Eta()<<endl;
+			cout<<"phi: "<<jetsEvent[i]->get4Momentum()->Phi()<<endl;
+			cout<<"BCH_CORR: "<<jetsEvent[i]->GetJets()->BCH_CORR_CELL()<<endl;
+			cout<<"emFrac: "<<jetsEvent[i]->GetJets()->emfrac()<<endl;
+			cout<<"pt: "<<jetsEvent[i]->get4Momentum()->Pt()<<endl;		cout<<"Tight cut: "<<tightCutVal<<endl;
+
+		}
+		//if(cutVal) return false;
+	}
+
+	if(isDebugCall)
+	{
+		cout<<"BCHCutTight: "<<temp_BCHCutTight<<endl;
+		cout<<"BCHCutMedium: "<<temp_BCHCutMedium<<endl;
+		cout<<"------------------"<<endl;
+		
+	}
+
+
+	return true;
+}
+
+>>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 // Single Electron Trigger
 Bool_t HiggsAnalysis::SingleElectronTrigger(Int_t runNumber)
 {
@@ -2790,7 +3098,12 @@ Bool_t HiggsAnalysis::CutCaloIso(vector<ChargedLepton *> curr_lep, vector<Double
 			else if(lep_i->getType() == leptonType::MuonCalo) {cout<<"CaloMuon: ";}
 			else if(lep_i->getType() == leptonType::MuonStaco) {cout<<"StacoMuon: ";}
 			
+<<<<<<< HEAD
 			cout<<dataCut << endl;
+=======
+			cout<<dataCut;
+			cout<<" pT: "<<lep_i->get4Momentum()->Pt()<<" Eta: "<<lep_i->get4Momentum()->Eta()<< endl;
+>>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 		}
 
 		if(lep_i->getFlavor() == flavor::Electron)
@@ -2898,25 +3211,63 @@ Bool_t HiggsAnalysis::TriggerMatch(vector<ChargedLepton *> curr_lep ,Int_t type)
 	Bool_t muTrigger = false;
 	Bool_t elTrigger = false;
 	Bool_t emuTrigger = false;
+<<<<<<< HEAD
 
 	if(type == analysisType::Mu4 || type == analysisType::El2Mu2 || type == analysisType::Mu2El2)
 	{
 		Bool_t singleMuTrigger = TriggerMatchSingleMuon(curr_lep, singleMu);
 		Bool_t diMuTrigger = TriggerMatchDiMuon(curr_lep, diMu);
+=======
+	Bool_t singleMuTrigger = false;
+	Bool_t diMuTrigger = false;
+	Bool_t singleElTrigger = false;
+	Bool_t diElTrigger = false;
+	Bool_t intEMuTrigger = false;
+	
+	
+	if(type == analysisType::Mu4 || type == analysisType::El2Mu2 || type == analysisType::Mu2El2)
+	{
+		singleMuTrigger = TriggerMatchSingleMuon(curr_lep, singleMu);
+		diMuTrigger = TriggerMatchDiMuon(curr_lep, diMu);
+>>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 		muTrigger = (singleMuTrigger || diMuTrigger);
 	}
 	if(type == analysisType::El4 || type == analysisType::El2Mu2 || type == analysisType::Mu2El2)
 	{
+<<<<<<< HEAD
 		Bool_t singleElTrigger = TriggerMatchSingleElectron(curr_lep, singleEl); 
 		Bool_t diElTrigger = TriggerMatchDiElectron(curr_lep, diEl); 
+=======
+		singleElTrigger = TriggerMatchSingleElectron(curr_lep, singleEl); 
+		diElTrigger = TriggerMatchDiElectron(curr_lep, diEl); 
+>>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 		elTrigger = (singleElTrigger || diElTrigger);
 	}
 	if(type == analysisType::El2Mu2 || type == analysisType::Mu2El2)
 	{
+<<<<<<< HEAD
 		Bool_t intEMuTrigger = TriggerMatchElectronMuon(curr_lep, eMu); 
 		emuTrigger = intEMuTrigger;
 	}
 
+=======
+		intEMuTrigger = TriggerMatchElectronMuon(curr_lep, eMu); 
+		emuTrigger = intEMuTrigger;
+	}
+
+
+	if(isDebugCall)
+	{
+		cout<<"---------------------"<<endl;
+		cout<<"Trigger match info: "<<endl;
+		cout<<"singleMuTrigger: "<<singleMuTrigger<<endl;
+		cout<<"diMuTrigger: "<<diMuTrigger<<endl;
+		cout<<"singleElTrigger: "<<singleElTrigger<<endl;
+		cout<<"diElTrigger: "<<diElTrigger<<endl;
+		cout<<"emuTrigger: "<<emuTrigger<<endl;
+		cout<<"---------------------"<<endl;
+	}
+>>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 	if(type == analysisType::Mu4) return muTrigger;
 	if (type == analysisType::El4) return elTrigger;
 	if (type == analysisType::El2Mu2 || type == analysisType::Mu2El2) return (muTrigger || elTrigger || emuTrigger);
@@ -3051,7 +3402,21 @@ Bool_t HiggsAnalysis::TriggerMatchDiMuon(vector<ChargedLepton *> curr_lep, TStri
 				// For Threshold Cuts currently non-existance
 				if(passCutTrig)
 				{
+<<<<<<< HEAD
 					if(lep_i->GetMuon()->pt() > pTThreshold1 && lep_j->GetMuon()->pt() > pTThreshold2 ){passCutThres = true;}
+=======
+					if(lep_i->GetMuon()->pt() > pTThreshold1 && lep_j->GetMuon()->pt() > pTThreshold2 )
+					{
+						passCutThres = true;
+
+						//if(isDebugCall)
+						//{
+						//	cout<<"Di Muon trig match info"<<endl;
+						//	cout<<"Muon 1 pt:"<<lep_i->GetMuon()->pt()<<endl;
+						//	cout<<"Muon 2 pt:"<<lep_j->GetMuon()->pt()<<endl;
+						//}
+					}
+>>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 				}
 			}
 		}
@@ -3229,6 +3594,19 @@ Bool_t HiggsAnalysis::TriggerMatchElectronMuon(vector<ChargedLepton *> curr_lep,
 				{
 					if(lep_i->GetElectron()->pt() > pTThreshold1 && lep_j->GetMuon()->pt() > pTThreshold2 )
 					{ passCutThres = true;}
+<<<<<<< HEAD
+=======
+
+					
+					//if(isDebugCall)
+					//{
+					//	cout<<"emu trig match info"<<endl;
+					//	cout<<"Trigger Name: "<<triggerName[i]<<endl;
+					//	cout<<"Electron pt:"<<lep_i->GetElectron()->pt()<<endl;
+					//	cout<<"Muon pt:"<<lep_j->GetMuon()->pt()<<endl;
+					//}
+
+>>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 				}
 			}
 		}
@@ -3274,7 +3652,11 @@ void HiggsAnalysis::MassCalc(QuadLepton * higgs, Int_t Type)
 // FSR Corrections
 void HiggsAnalysis::CorrectFSR(QuadLepton * higgs, Int_t Type)
 {
+<<<<<<< HEAD
 	if (curEvent == 6 || curEvent == 73) isDebugCall = true;
+=======
+
+>>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 	// Default FSR correction - no FSR correction
 	higgs->fsrType = fsrType::noFSR;
 	// Getting all the lepton in the quad
@@ -3343,7 +3725,11 @@ void HiggsAnalysis::CorrectFSR(QuadLepton * higgs, Int_t Type)
 		//else if(dataYear == 2012) ph_Etcone40_corrected = event->ph.topoEtcone40_corrected();
 		
 		if(lep_curr->getFlavor() == flavor::Muon)
+<<<<<<< HEAD
 		{	
+=======
+		{
+>>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 			D3PDReader::MuonD3PDObjectElement* mu_curr = lep_curr->GetMuon();
 			FsrPhotons fsrphotons;
 			FsrPhotons::FsrCandidate cand_curr;
@@ -3372,17 +3758,30 @@ void HiggsAnalysis::CorrectFSR(QuadLepton * higgs, Int_t Type)
     		                             el_cur->trackphi(),
     		                             cand_curr,
 										 event->ph.tight())){
+<<<<<<< HEAD
 				isDebugCall = true;
 				if(isDebugCall) {cout<<"Muon "<< i <<" Muon eta: "<<mu_curr->eta()<<" Muon Phi"<<mu_curr->phi()<<endl;
     		      std::cout << "Found FSR index, dR, Et, f1, cont " << cand_curr.index << " " << cand_curr.deltaR
     		                 << " " << cand_curr.Et << " " <<  cand_curr.f1 << " " << cand_curr.container << std::endl;
 				cout<<"-------------------"<<endl;}
 				isDebugCall = false;
+=======
+				if(isDebugCall) {cout<<"Muon "<< i <<" Muon eta: "<<mu_curr->eta()<<" Muon Phi"<<mu_curr->phi()<<endl;
+    		      std::cout << "Found FSR index, dR, Et, f1, cont " << cand_curr.index << " " << cand_curr.deltaR
+    		                 << " " << cand_curr.Et << " " <<  cand_curr.f1 << " " << cand_curr.container << std::endl;
+				  std::cout<<"Muon info: eta: "<<mu_curr->eta()<<" phi: "<<mu_curr->phi()<<" id_theta: "
+					  <<mu_curr->id_theta()<<" id_phi: "<<mu_curr->id_phi()<<endl;
+				cout<<"-------------------"<<endl;}
+>>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
     		  }
 			candVec.push_back(cand_curr);
 		}
 		else if(lep_curr->getFlavor() == flavor::Electron)
+<<<<<<< HEAD
 		{	
+=======
+		{
+>>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 			D3PDReader::ElectronD3PDObjectElement* el_curr = lep_curr->GetElectron();
 			FsrPhotons fsrphotons;
 			FsrPhotons::FsrCandidate cand_curr;
@@ -3438,17 +3837,29 @@ void HiggsAnalysis::CorrectFSR(QuadLepton * higgs, Int_t Type)
 				isFSR = true;
 			}
 		}
+<<<<<<< HEAD
 		isDebugCall = true;
 		if(isDebugCall) cout<<"FSR colinear candidate Passed the deltaR cut"<<endl;
+=======
+		if(isDebugCall) cout<<"FSR colinear candidate Passed the deltaR cut"<<endl;
+		if(isDebugCall) cout<<"Et: "<<higestEt<<endl;
+>>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 		// if FSR found, then do the checks associated with Z1 for the collinear FSR
 		if(isFSR)
 		{
 			if((higgs->getZ1()->get4Momentum()->M() < 89*1000) && (higgs->getZ1()->get4Momentum()->M() > 66*1000))
+<<<<<<< HEAD
 			{	
 				if(isDebugCall) cout<<"FSR collinear candidate passed the Z1 mass cut"<<endl;
     		    TLorentzVector momFSR;
 				momFSR.SetPtEtaPhiM(candidate.Et,candidate.eta,candidate.phi, 0.0);
 	
+=======
+			{
+				if(isDebugCall) cout<<"FSR collinear candidate passed the Z1 mass cut"<<endl;
+    		    TLorentzVector momFSR;
+				momFSR.SetPtEtaPhiM(candidate.Et,candidate.eta,candidate.phi, 0.0);
+>>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 
 				Double_t combMass = (higgs->getZ1()->getLepPlus()->get4MomentumNoP() 
 						+ higgs->getZ1()->getLepNeg()->get4MomentumNoP() 
@@ -3470,7 +3881,10 @@ void HiggsAnalysis::CorrectFSR(QuadLepton * higgs, Int_t Type)
 				}
 			}
 		}
+<<<<<<< HEAD
 		isDebugCall = false;
+=======
+>>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 	}
 	// If no collinear FSR has been found
 	if(!passFSRCollinear)
@@ -3513,6 +3927,10 @@ void HiggsAnalysis::CorrectFSR(QuadLepton * higgs, Int_t Type)
 				// If deltaR cut has been pases
 				if(!deltaRCut)
 				{
+<<<<<<< HEAD
+=======
+
+>>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 					if(isDebugCall) cout<<"FSR far candidate passed Delta R cut"<<endl;										
 					//cout<<"Passed Delta R cut"<<endl;
 					Double_t deltaZ1Mass = 999999;
@@ -3596,8 +4014,11 @@ void HiggsAnalysis::CorrectFSR(QuadLepton * higgs, Int_t Type)
 		higgs->sum_fsr = higgs->sum_fsr + leptonLorentzFsr[i];
 	}
 	leptonLorentzFsr.clear();
+<<<<<<< HEAD
 	
 	isDebugCall = false;
+=======
+>>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 }	
 // Zmass Constraint
 void HiggsAnalysis::CorrectZMassConstraint(QuadLepton * higgs, Int_t muType)
@@ -3627,6 +4048,32 @@ void HiggsAnalysis::CorrectZMassConstraint(QuadLepton * higgs, Int_t muType)
                                                            higgs->getZ1()->getHepFSRError());
 	}
 
+<<<<<<< HEAD
+=======
+	//if(isDebugCall && muType == muonType::CB)
+	//{
+	//	CLHEP::HepMatrix temp = higgs->getZ1()->getLepPlus()->getHepCovMatrix(muType);
+	//	for(Int_t i = 1; i < 6; i++)
+	//	{
+	//		for(Int_t j = 1; j < 6; j++)
+	//		{
+	//			cout<<std::setprecision(10)<<std::scientific<<temp[i][j]<<"\t";
+	//		}
+	//		cout<<endl;
+	//	}
+
+	//	temp = higgs->getZ1()->getLepNeg()->getHepCovMatrix(muType);
+	//	for(Int_t i = 1; i < 6; i++)
+	//	{
+	//		for(Int_t j = 1; j < 6; j++)
+	//		{
+	//			cout<<std::setprecision(10)<<std::scientific<<temp[i][j]<<"\t";
+	//		}
+	//		cout<<endl;
+	//	}
+
+	//}
+>>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 	// Perform the Zmass contraint on Z1
 	massFit->massFitInterface(inputZMassConstraint);
     ZMassConstraint::ConstraintFitOutput massFitResult = massFit->massFitRun(-1.);
@@ -3731,6 +4178,15 @@ void HiggsAnalysis::CorrectZMassConstraint(QuadLepton * higgs, Int_t muType)
 	for(Int_t i = 0; i <  (Int_t) leptonLorentzZmass.size(); i++)
 	{
 		if(muType == muonType::CB) higgs->sum_constrained = higgs->sum_constrained + leptonLorentzZmass[i];
+<<<<<<< HEAD
+=======
+
+		if(isDebugCall && muType == muonType::CB)
+		{
+			cout<<"const vec: pT:"<<leptonLorentzZmass[i].Pt()<<" eta: "<<leptonLorentzZmass[i].Eta()<<" phi: "<<leptonLorentzZmass[i].Phi()<<" m: "<<leptonLorentzZmass[i].M()<<endl; 
+			cout<<"const vec: E:"<<leptonLorentzZmass[i].E()<<" eta: "<<leptonLorentzZmass[i].Eta()<<" phi: "<<leptonLorentzZmass[i].Phi()<<" m: "<<leptonLorentzZmass[i].M()<<endl<<endl; 
+		}
+>>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 	}
 
 	lep4Momentum.clear();
@@ -3787,7 +4243,11 @@ Double_t HiggsAnalysis::getggFWeight()
 	//// Dependant on data
 	//if (dataset == 167120 || dataset == 167121 || dataset == 167122 || dataset == 167123) {
 	//   higgsPdgId = 39;
+<<<<<<< HEAD
 	//
+=======
+	//}
+>>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 	Double_t trueHiggsPt = 0;
 	
    	for (Int_t i = 0; i < event->mc.n(); i++) {
@@ -4116,6 +4576,11 @@ void HiggsAnalysis::fillCrossSection(QuadLepton * higgs)
 	Double_t BR_correction_2l2l = -1;
 	Double_t BR_correction = -1;
 	Double_t lumi = -1;
+<<<<<<< HEAD
+=======
+	Double_t corrBR = -1;
+	Double_t orgBR = -1;
+>>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 
 	if(isMC)
 	{
@@ -4156,8 +4621,19 @@ void HiggsAnalysis::fillCrossSection(QuadLepton * higgs)
 			(RunNumber>=167895 && RunNumber<=167896) || // 2012 new samples// added Oct 6
 			(RunNumber>=181306 && RunNumber<=181307) || // 2012 new samples // added Oct 6
 			(RunNumber>=181870 && RunNumber<=181874) || // 2012 new samples added Jan 3 14
+<<<<<<< HEAD
 			(RunNumber == 189140) 					 ){ // 2012 inclusive sample added Jan 31
 			if(sampleProdType != sampleType::ggF) cout<<"Error: getCrossSection: prodType misMatch ggF"<<endl;	
+=======
+			(RunNumber == 189140) 					 || // 2012 inclusive sample added Jan 31
+			(RunNumber>=181990 && RunNumber<=181996) || // 2012 spin samples added Feb 4
+			(RunNumber>=181998 && RunNumber<=181999) || // 2012 width samples added Feb 12
+			(RunNumber == 189533)					 || // 2012 width samples added March 7
+			(RunNumber>=181607 && RunNumber<=181608) || // 2012 Prophecy sample added March 23
+			(RunNumber>=189580 && RunNumber<=189581)    // 2012 noTau sample added March 23
+			){
+			if(sampleProdType != sampleType::ggF) {cout<<"Error: getCrossSection: prodType misMatch ggF"<<endl;	exit(-1);}
+>>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 			crossSection = Higgs_xs.higgsprodxsecGGF(massHiggs,energyLHC);
 		}
 		else if( (RunNumber>=125063 && RunNumber<=125101) ||  // 2011
@@ -4177,8 +4653,16 @@ void HiggsAnalysis::fillCrossSection(QuadLepton * higgs)
                  (RunNumber>=181160 && RunNumber<=181175) ||  // 2012
                  (RunNumber>=181337 && RunNumber<=181343) ||  // 2012 new samples
 				 (RunNumber>=181885 && RunNumber<=181889) ||  // 2012 samples added Jan 3 14
+<<<<<<< HEAD
 				 (RunNumber == 189141) 				 	  ){ // 2012 inclusive sample added Jan 31
 			if(sampleProdType != sampleType::VBF) cout<<"Error: getCrossSection: prodType misMatch VBF"<<endl;			
+=======
+				 (RunNumber == 189141) 				 	  ||  // 2012 inclusive sample added Jan 31
+				 (RunNumber>=189534 && RunNumber<=189536) ||  // 2012 width sample
+				 (RunNumber>=189582 && RunNumber<=189583)     // 2012 noTau sample added March 23
+				 ){ 
+			if(sampleProdType != sampleType::VBF) {cout<<"Error: getCrossSection: prodType misMatch VBF"<<endl;	exit(-1);}		
+>>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 		  	crossSection = Higgs_xs.higgsprodxsecVBF(massHiggs,energyLHC);
 		} 
 		else if( (RunNumber>=125265 && RunNumber<=125290) || // 2011
@@ -4189,7 +4673,11 @@ void HiggsAnalysis::fillCrossSection(QuadLepton * higgs)
                  (RunNumber>=167240 && RunNumber<=167247) || // 2012
 				 (RunNumber == 189142) 				      ){ // 2012 inclusive sample added Jan 31
 		  
+<<<<<<< HEAD
 			if(sampleProdType != sampleType::WH) cout<<"Error: getCrossSection: prodType misMatch WH"<<endl;	
+=======
+			if(sampleProdType != sampleType::WH) {cout<<"Error: getCrossSection: prodType misMatch WH"<<endl;	exit(-1);}	
+>>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 			crossSection = Higgs_xs.higgsprodxsecWH(massHiggs,energyLHC);
 		} 
 		else if( (RunNumber>=125425 && RunNumber<=125450) || // 2011
@@ -4200,7 +4688,11 @@ void HiggsAnalysis::fillCrossSection(QuadLepton * higgs)
                  (RunNumber>=167250 && RunNumber<=167257) || // 2012
 				 (RunNumber == 189143) 					  ){ // 2012 inclusive sample added Jan 31
 		  
+<<<<<<< HEAD
 			if(sampleProdType != sampleType::ZH) cout<<"Error: getCrossSection: prodType misMatch ZH"<<endl;	
+=======
+			if(sampleProdType != sampleType::ZH) {cout<<"Error: getCrossSection: prodType misMatch ZH"<<endl;	exit(-1);}	
+>>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 		  	crossSection = Higgs_xs.higgsprodxsecZH(massHiggs,energyLHC);
 		}
 		else if( (RunNumber>=167570 && RunNumber<=167575) || // 2011
@@ -4208,7 +4700,11 @@ void HiggsAnalysis::fillCrossSection(QuadLepton * higgs)
                  (RunNumber>=167560 && RunNumber<=167569) || // 2012
 				 (RunNumber == 189144) 					  ){ // 2012 inclusive sample added Jan 31
 			
+<<<<<<< HEAD
 			if(sampleProdType != sampleType::ttH) cout<<"Error: getCrossSection: prodType misMatch ttH"<<endl;	
+=======
+			if(sampleProdType != sampleType::ttH) {cout<<"Error: getCrossSection: prodType misMatch ttH"<<endl;	exit(-1);}	
+>>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 		  	crossSection = Higgs_xs.higgsprodxsecttH(massHiggs,energyLHC);
 		}
 		else if( (RunNumber>=169716 && RunNumber<=169717) ||  // 2011 JHU
@@ -4218,11 +4714,19 @@ void HiggsAnalysis::fillCrossSection(QuadLepton * higgs)
                  (RunNumber>=169710 && RunNumber<=169711) ||  // 2012 JHU
                  (RunNumber>=167124 && RunNumber<=167125) ||  // 2012 JHU
                  (RunNumber>=167127 && RunNumber<=167127) ) {  // 2012 JHU		  
+<<<<<<< HEAD
 			if(sampleProdType != sampleType::qqF) cout<<"Error: getCrossSection: prodType misMatch qqF"<<endl;			
 		  	crossSection = Higgs_xs.higgsprodxsecGGF(massHiggs,energyLHC);
 		}		
 		else if( (RunNumber>=181250 && RunNumber<=181280)) {  // 2012 z'z' s// added Oct 6
 			if(sampleProdType != sampleType::ggF_ZpZp) cout<<"Error: getCrossSection: prodType misMatch  z'z' qqF"<<endl;	
+=======
+			if(sampleProdType != sampleType::qqF) {cout<<"Error: getCrossSection: prodType misMatch qqF"<<endl;	exit(-1);}			
+		  	crossSection = Higgs_xs.higgsprodxsecGGF(massHiggs,energyLHC);
+		}		
+		else if( (RunNumber>=181250 && RunNumber<=181280)) {  // 2012 z'z' s// added Oct 6
+			if(sampleProdType != sampleType::ggF_ZpZp) {cout<<"Error: getCrossSection: prodType misMatch  z'z' qqF"<<endl;	exit(-1);}	
+>>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 			
 			if(energyLHC == CrossSections::SevenTeV) crossSection = CrossSections::GetBkgCrossSection7TeV(RunNumber);
 			else if (energyLHC == CrossSections::EightTeV) crossSection = CrossSections::GetBkgCrossSection8TeV(RunNumber);
@@ -4230,7 +4734,11 @@ void HiggsAnalysis::fillCrossSection(QuadLepton * higgs)
 
 		else{
 		  //// HSG2 cross section
+<<<<<<< HEAD
 			if(sampleProdType != sampleType::Background) cout<<"Error: getCrossSection: prodType misMatch background"<<endl;	  
+=======
+			if(sampleProdType != sampleType::Background) {cout<<"Error: getCrossSection: prodType misMatch background"<<endl;	exit(-1);}	  
+>>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 		  	//crossSection = bkgCrossSection(RunNumber,energyLHC);
 			if(energyLHC == CrossSections::SevenTeV) crossSection = CrossSections::GetBkgCrossSection7TeV(RunNumber);
 			else if (energyLHC == CrossSections::EightTeV) crossSection = CrossSections::GetBkgCrossSection8TeV(RunNumber);
@@ -4256,6 +4764,19 @@ void HiggsAnalysis::fillCrossSection(QuadLepton * higgs)
 		else if(higgs->getQuadTypeBR() == quadType::Mu4 || higgs->getQuadTypeBR() == quadType::El4) BR_correction = BR_correction_4l;
 		else if(higgs->getQuadTypeBR() == quadType::Mu2El2 || higgs->getQuadTypeBR() == quadType::El2Mu2) BR_correction = BR_correction_2l2l;
 
+<<<<<<< HEAD
+=======
+		// BR Correction
+		if(isMC)
+		{
+			corrBR = brCorr->getBRcorrection(event->mc.pdgId(), event->mc.status(), event->mc.child_index(),event->mc.parent_index());
+			
+		}
+		orgBR = BR_correction;
+		BR_correction = BR_correction * corrBR;
+
+
+>>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 		// For inclusive Samples, br = 1
 
 	
@@ -4279,7 +4800,18 @@ void HiggsAnalysis::fillCrossSection(QuadLepton * higgs)
 	{
 		cout<<"------------------------"<<endl;
 		cout<<"CrossSection: "<<crossSection<<endl;
+<<<<<<< HEAD
 		cout<<"branchRatio: "<<BR_correction<<endl;
+=======
+		cout<<"Truth Quad type: ";
+		if(higgs->getQuadTypeBR() == quadType::Mu4) cout<<" 4mu"<<endl;
+		if(higgs->getQuadTypeBR() == quadType::Mu2El2) cout<<" 2mu2e"<<endl;
+		if(higgs->getQuadTypeBR() == quadType::El2Mu2) cout<<" 2e2mu"<<endl;
+		if(higgs->getQuadTypeBR() == quadType::El4) cout<<" 4e"<<endl;
+		cout<<"Original branchRatio: "<<orgBR<<endl;
+		cout<<"corrected branchRatio: "<<BR_correction<<endl;
+		cout<<"correction: "<<corrBR<<endl;
+>>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 		cout<<"lumi: "<<lumi<<endl;
 		cout<<"------------------------"<<endl;
 		
@@ -4484,6 +5016,10 @@ void HiggsAnalysis::fillProductionChannel(QuadLepton * higgs, vector<ChargedLept
 			cout<<"dijet_invmass: "<<dijet_invmass<<endl;
 			cout<<"dijet_deltaeta: "<<dijet_deltaeta<<endl;
 			cout<<"leading_jet_pt: "<<leading_jet_pt<<endl;
+<<<<<<< HEAD
+=======
+			cout<<"leading_jet_m: "<<leadingJet->get4Momentum()->M()<<endl;
+>>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 			cout<<"leading_jet_eta: "<<leading_jet_eta<<endl;
 			cout<<"subleading_jet_pt: "<<subleading_jet_pt<<endl;
 			cout<<"dijet_invmass: "<<dijet_invmass<<endl;
@@ -4520,6 +5056,10 @@ void HiggsAnalysis::fillProductionChannel(QuadLepton * higgs, vector<ChargedLept
 				extraLep.push_back(elObject[i]);				
 			}
 		}
+<<<<<<< HEAD
+=======
+	
+>>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 	}
 	if(isDebugCall) cout<<"Size of extraLep: "<<extraLep.size()<<endl;
 	
@@ -4579,6 +5119,18 @@ void HiggsAnalysis::fillProductionChannel(QuadLepton * higgs, vector<ChargedLept
 			cout<<"LepType: "<<leadingExtraLep->lepType<<endl;
 			cout<<"Parent LepType: "<<leadingExtraLep->truthParentType<<endl;
 			cout<<"Charge: "<<leadingExtraLep->charge<<endl;
+<<<<<<< HEAD
+=======
+			if(leadingExtraLep->getFlavor() == flavor::Electron)
+			{
+				cout<<"Truth bareCode: "<<leadingExtraLep->GetElectron()->truth_barcode()<<endl;
+			}
+			else if(leadingExtraLep->getFlavor() == flavor::Muon)
+			{
+				cout<<"Truth bareCode: "<<leadingExtraLep->GetMuon()->truth_barcode()<<endl;
+			}
+
+>>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 		}
 		if(subleadingExtraLep != 0)
 		{
@@ -4588,7 +5140,19 @@ void HiggsAnalysis::fillProductionChannel(QuadLepton * higgs, vector<ChargedLept
 			cout<<"LepType: "<<subleadingExtraLep->lepType<<endl;
 			cout<<"Parent LepType: "<<subleadingExtraLep->truthParentType<<endl;
 			cout<<"Charge: "<<subleadingExtraLep->charge<<endl;
+<<<<<<< HEAD
 			
+=======
+			if(subleadingExtraLep->getFlavor() == flavor::Electron)
+			{
+				cout<<"Truth bareCode: "<<subleadingExtraLep->GetElectron()->truth_barcode()<<endl;
+			}
+			else if(subleadingExtraLep->getFlavor() == flavor::Muon)
+			{
+				cout<<"Truth bareCode: "<<subleadingExtraLep->GetMuon()->truth_barcode()<<endl;
+			}
+
+>>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 		}
 
 		cout<<endl;
@@ -4837,6 +5401,10 @@ Bool_t HiggsAnalysis::isGoodExtraLepton(QuadLepton * higgs, ChargedLepton * lep)
 void HiggsAnalysis::fillExtraLepParent(ChargedLepton* lep)
 {
 	Int_t lepBareTruthIndex = -1;
+<<<<<<< HEAD
+=======
+	if(!isMC) return;
+>>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 	if(lep->getFlavor() == flavor::Electron)
 	{
 		D3PDReader::ElectronD3PDObjectElement* el =  lep->GetElectron();
@@ -4857,7 +5425,11 @@ void HiggsAnalysis::fillExtraLepParent(ChargedLepton* lep)
 		
 		lepBareTruthIndex = getIndexBarcodeMatch(truthBarcode, truthPDG);
 	}
+<<<<<<< HEAD
 
+=======
+	
+>>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 	// Get the Z index and mass
 	vector<Int_t> zHiggsIndex;
 	vector<Double_t> zHiggsMass;
@@ -4871,7 +5443,10 @@ void HiggsAnalysis::fillExtraLepParent(ChargedLepton* lep)
                             status==155   || // Jimmy gg2ZZ NOT WORKING
                             status==10902 || // Pythia6 stable Z->ll (equivalent to status==2) (l status 1)
                             status==2     || // Pythia6 stable Z->ll                           (l status 1)
+<<<<<<< HEAD
                             status==3     || // Pythia6 stable Z->ll                           (l status 3)
+=======
+>>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
                             status==62)))    // PowHegPythia8 ZZ->4l                           (l status 3 and 1))
 		{
 			// To veto the third Z in ZH samples
@@ -4886,7 +5461,11 @@ void HiggsAnalysis::fillExtraLepParent(ChargedLepton* lep)
 	}
 
 	if(zHiggsIndex.size() != 2 && generatorName == MCGeneratorName::Pythia && sampleProdType != sampleType::Background)
+<<<<<<< HEAD
 		cout<<"Error: too many (or too less) Z boson for extra lep: size: "<<zHiggsIndex.size()<<endl;
+=======
+		cout<<"Error: too many (or too less) Z boson for extra lep: size: "<<zHiggsIndex.size()<<" EventNumber: "<<event->eventinfo.EventNumber()<<endl;
+>>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 
 	Int_t z1Index = -1;
 	Int_t z2Index = -1;
@@ -4905,11 +5484,18 @@ void HiggsAnalysis::fillExtraLepParent(ChargedLepton* lep)
 		}
 
 	}
+<<<<<<< HEAD
 
 	// So have the truth bare index
 	// Now check if the parents are W
 	Bool_t parentW = checkParent(lepBareTruthIndex, 24) || checkParent(lepBareTruthIndex, -24);
 
+=======
+	
+	// So have the truth bare index
+	// Now check if the parents are W
+	Bool_t parentW = checkParent(lepBareTruthIndex, 24) || checkParent(lepBareTruthIndex, -24);
+>>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 	Bool_t parentZ = checkParent(lepBareTruthIndex, 23);
 	Bool_t parentZ1 = checkParent(lepBareTruthIndex, 23, z1Index);
 	Bool_t parentZ2 = checkParent(lepBareTruthIndex, 23, z2Index);
@@ -4923,9 +5509,12 @@ void HiggsAnalysis::fillExtraLepParent(ChargedLepton* lep)
 	else if(parentZ && parentHiggs && parentZ1) lep->truthParentType = VHTruthType::Z1fromHiggs;
 	else if(parentZ && parentHiggs && parentZ2) lep->truthParentType = VHTruthType::Z2fromHiggs;
 	else lep->truthParentType = VHTruthType::unknown;
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 }
 
 
@@ -5531,8 +6120,16 @@ void HiggsAnalysis::fillTruthInfo(QuadLepton * higgs, TLorentzVector bornSumVec)
 
 	if(isDebugCall)
 	{
+<<<<<<< HEAD
 		cout<<"--------------------------------"<<endl;
 		cout<<"Truth Information - true matched"<<endl;
+=======
+		TLorentzVector Z1t;
+		TLorentzVector Z2t;
+		TLorentzVector ht;
+		cout<<"--------------------------------"<<endl;
+		cout<<"Truth Information - true truth"<<endl;
+>>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 		cout<<"Born lepton"<<endl<<endl;
 		for(Int_t i = 0; i <  (Int_t) trueZ1Vec.size(); i++)
 		{
@@ -5541,6 +6138,10 @@ void HiggsAnalysis::fillTruthInfo(QuadLepton * higgs, TLorentzVector bornSumVec)
 			cout<<"Eta: "<< trueZ1Vec[i].Eta()<<"\t";
 			cout<<"Phi: "<< trueZ1Vec[i].Phi()<<"\t";
 			cout<<"M: "<< trueZ1Vec[i].M()<<endl;
+<<<<<<< HEAD
+=======
+			Z1t += trueZ1Vec[i];
+>>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 		}
 		for(Int_t i = 0; i <  (Int_t) trueZ2Vec.size(); i++)
 		{
@@ -5549,7 +6150,17 @@ void HiggsAnalysis::fillTruthInfo(QuadLepton * higgs, TLorentzVector bornSumVec)
 			cout<<"Eta: "<< trueZ2Vec[i].Eta()<<"\t";
 			cout<<"Phi: "<< trueZ2Vec[i].Phi()<<"\t";
 			cout<<"M: "<< trueZ2Vec[i].M()<<endl;
+<<<<<<< HEAD
 		}
+=======
+			Z2t += trueZ2Vec[i];
+		}
+		ht = Z1t + Z2t;
+
+		cout<<"mZ1_true_truth: "<<Z1t.M()<<endl;
+		cout<<"mZ2_true_truth: "<<Z2t.M()<<endl;
+		cout<<"m4l_true_truth: "<<ht.M()<<endl;
+>>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 		cout<<"--------------------------------"<<endl;
 	}
 
@@ -5593,6 +6204,10 @@ Bool_t HiggsAnalysis::checkParentHiggs(Int_t index)
 Bool_t HiggsAnalysis::checkParent(Int_t index, Int_t parentPDGID, Int_t constParentIndex)
 {
 	if(index == -1) return false;
+<<<<<<< HEAD
+=======
+	if(generatorName != MCGeneratorName::Pythia) return false;
+>>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 	if(event->mc[index].parent_index().size() == 0) return false; 
 
 	for (Int_t i = 0; i < (Int_t) event->mc[index].parent_index().size(); i++)
@@ -6305,10 +6920,17 @@ void HiggsAnalysis::fillMuonHelperVars()
 		//cout<<"staco bfID theta: "<<(*mu)[i].id_theta()/2<<" MS theta: "<<(*mu)[i].me_theta()/2<<endl;
 		//cout<<"staco bfID eta: "<<(*mu)[i].id_eta<<" MS eta: "<<(*mu)[i].me_eta<<endl;
 		//
+<<<<<<< HEAD
 		if(isDebugCall)
 		{
 			cout<<"Staco i: CB pt: "<<(*mu)[i].cb_pt_unsmeared<<" ID: "<<(*mu)[i].id_pt_unsmeared<<" MS: "<<(*mu)[i].me_pt_unsmeared<<endl;
 		}
+=======
+		//if(isDebugCall)
+		//{
+		//	cout<<"Staco i: CB pt: "<<(*mu)[i].cb_pt_unsmeared<<" ID: "<<(*mu)[i].id_pt_unsmeared<<" MS: "<<(*mu)[i].me_pt_unsmeared<<endl;
+		//}
+>>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 	}
 
 	mu = &(event->mu_calo);
@@ -6340,10 +6962,17 @@ void HiggsAnalysis::fillMuonHelperVars()
 
 		//cout<<"calo  bfID theta: "<<(*mu)[i].id_theta()/2<<" MS theta: "<<(*mu)[i].me_theta()/2<<endl;
 		//cout<<"calo bfID eta: "<<(*mu)[i].id_eta<<" MS eta: "<<(*mu)[i].me_eta<<endl;
+<<<<<<< HEAD
 		if(isDebugCall)
 		{
 			cout<<"Calo i: CB pt: "<<(*mu)[i].cb_pt_unsmeared<<" ID: "<<(*mu)[i].id_pt_unsmeared<<" MS: "<<(*mu)[i].me_pt_unsmeared<<endl;
 		}
+=======
+		//if(isDebugCall)
+		//{
+		//	cout<<"Calo i: CB pt: "<<(*mu)[i].cb_pt_unsmeared<<" ID: "<<(*mu)[i].id_pt_unsmeared<<" MS: "<<(*mu)[i].me_pt_unsmeared<<endl;
+		//}
+>>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 
 		
 	}
@@ -6475,7 +7104,13 @@ Double_t HiggsAnalysis::getMCHiggsMass()
 	   (RunNumber>=167600 && RunNumber<=167603) || // 2011 JHU
        (RunNumber>=167606 && RunNumber<=167606) || // 2011 JHU
        (RunNumber>=167120 && RunNumber<=167123) || // 2012 JHU
+<<<<<<< HEAD
        (RunNumber>=167126 && RunNumber<=167126) ) 
+=======
+       (RunNumber>=167126 && RunNumber<=167126) || 
+	   (RunNumber>=181990 && RunNumber<=181996)    // mc12c JHU
+	  ) 
+>>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 	{  		  
 		noTauSample = true;
 		generatorName = MCGeneratorName::Pythia;
@@ -6860,7 +7495,11 @@ void HiggsAnalysis::FillTriggerString(TString singleMu [], TString diMu[], TStri
 ////////////////////////////////////////////////////////////////////////////////////////
 //				Printing and Saving...
 ////////////////////////////////////////////////////////////////////////////////////////
+<<<<<<< HEAD
 // To print the initial vars
+=======
+// To print the intial vars
+>>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 void HiggsAnalysis::PrintInitVar()
 {
 	cout<<"Intial Variable for the cutFlow Analysis"<<endl;
@@ -6915,7 +7554,11 @@ void HiggsAnalysis::printDebugInfo()
 	cout<<"DataPeriod: "<<dataPeriod<<endl;
 	cout<<"isMC: "<<isMC<<endl;
 	cout<<"Year: "<<dataYear<<endl;
+<<<<<<< HEAD
 	cout<<"AnalyseEventOutput: (don't really trust this..): "<< AnalyzeTreeEvent(curEvent)<<endl;
+=======
+	cout<<"AnalyseEventOutput: (don't reall trust this..): "<< AnalyzeTreeEvent(curEvent)<<endl;
+>>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 	cout<<"DataPreselectionCut: "<<DataPreselectionCut()<<endl;
 	cout<<"AllPreselectionCut: "<<AllPreselectionCut()<<endl;
 	cout<<"Vertex Cut: "<< VertexCut()<<endl;
@@ -7242,10 +7885,17 @@ TString HiggsAnalysis::getParticleName(int pdgID)
 	}
 }
 ////////////////////////////////////////////////////////////////////////////////////////
+<<<<<<< HEAD
 //				Initialize the vars...
 ////////////////////////////////////////////////////////////////////////////////////////
 
 // Initialize all the variables necessary for the cutflow
+=======
+//				Intiaial the vars...
+////////////////////////////////////////////////////////////////////////////////////////
+
+// Initialize all the variables nessecary for the cutflow
+>>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 int HiggsAnalysis::InitializeVar()
 {
 		// Cut Flow the Overall Analysis	
@@ -7392,7 +8042,11 @@ int HiggsAnalysis::InitializeVar()
 	return 0;
 }
 
+<<<<<<< HEAD
 // Initializing the tools for trigger matching
+=======
+// Initialzing the tools for trigger matching
+>>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 // Essentially copied from Fabien
 void HiggsAnalysis::InitTriggerMatchingTool()
 {
@@ -7462,6 +8116,7 @@ void HiggsAnalysis::InitTriggerMatchingTool()
 void HiggsAnalysis::InitTriggerMatchingToolMain()
 {
 	triggerNavigationVariables= new TriggerNavigationVariables();
+<<<<<<< HEAD
     muonTriggerMatchTool = new MuonTriggerMatching(triggerNavigationVariables);
     electronTriggerMatchTool = new ElectronTriggerMatching(triggerNavigationVariables); 
 	if(dataYear == 2011)
@@ -7480,6 +8135,46 @@ void HiggsAnalysis::InitTriggerMatchingToolMain()
                                        "../../ElectronEfficiencyCorrection/data/",
                                        "rel17p2.v07");
 	}
+=======
+	muonTriggerMatchTool = new MuonTriggerMatching(triggerNavigationVariables);
+	electronTriggerMatchTool = new ElectronTriggerMatching(triggerNavigationVariables); 
+	if(dataYear == 2011)
+	{
+		leptonSF = new LeptonTriggerSF(2011, 
+				"../../TrigMuonEfficiency/share", 
+				"muon_trigger_sf_mc11c.root",
+				"../../ElectronEfficiencyCorrection/data/",
+				"rel17p0.v02");
+	}
+	else if(dataYear == 2012)
+	{
+		//leptonSF = new LeptonTriggerSF(2012, 
+		//                               "../../TrigMuonEfficiency/share", 
+		//                               "muon_trigger_sf_2012_AtoL.p1328.root",
+		//                               "../../ElectronEfficiencyCorrection/data/",
+		//                               "rel17p2.v07");
+
+		if (curMCCollection == MCCollection::MC12a ||
+				curMCCollection == MCCollection::MC12b ||
+				curDataCollection == dataCalibType::y2012ab ){
+			leptonSF = new LeptonTriggerSF(2012, 
+					"../../TrigMuonEfficiency/share", 
+					"muon_trigger_sf_2012_AtoL.p1328.root",
+					"../../ElectronEfficiencyCorrection/data/",
+					"rel17p2.GEO20.v08");
+		}
+		else if (curMCCollection == MCCollection::MC12c ||
+				curDataCollection == dataCalibType::y2012c ){
+			leptonSF = new LeptonTriggerSF(2012, 
+					"../../TrigMuonEfficiency/share", 
+					"muon_trigger_sf_2012_AtoL.p1328.root",
+					"../../ElectronEfficiencyCorrection/data/",
+					"rel17p2.GEO21.v01");
+		}
+	}
+
+
+>>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 }
 
 // To setup the print list. Called from the steering script
@@ -7560,7 +8255,11 @@ void HiggsAnalysis::SetupPrintEventList(Bool_t overWrite, TString fileName)
 	}
 
 }
+<<<<<<< HEAD
 // Actually outputs the print list
+=======
+// Acutally outputs the print list
+>>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 void HiggsAnalysis::PrintEventList(Bool_t passCut4Mu, Bool_t passCut4El, Bool_t passCut2L2L)
 {
 	// Choosing the Bool stream for 2e2mu and 2mu2e channel
@@ -7688,7 +8387,11 @@ void HiggsAnalysis::PrintEventList(Bool_t passCut4Mu, Bool_t passCut4El, Bool_t 
 
 }
 
+<<<<<<< HEAD
 // To save the histograms. Called from outside as well
+=======
+// To save the histrograms. Called from outside as well
+>>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 void HiggsAnalysis::SaveHist(Bool_t overWrite)
 {
 
@@ -7733,7 +8436,11 @@ TString HiggsAnalysis::getSampleName()
 	if(printWeight) return "debug call printWeight";
 	return fileNamePart[fileNamePart.size() - 2];
 }
+<<<<<<< HEAD
 // To populate the necessary vars
+=======
+// To populate the nesscary vars
+>>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 void HiggsAnalysis::FillCountingHist()
 {
 	// Filing cutPass

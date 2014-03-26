@@ -167,6 +167,12 @@ ChargedLepton::ChargedLepton(D3PDReader::JetD3PDObjectElement *tJets, Int_t tTyp
 	m_momentum.SetPtEtaPhiM(pT, eta, phi, M);
 	m_momentumBDT.SetPtEtaPhiM(pT/1000, eta, phi, M/1000);
 
+<<<<<<< HEAD
+=======
+
+	//cout<<"Jet M: "<<M<<endl;
+	//cout<<"TVL JET M: "<<m_momentum_main->M()<<endl;
+>>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 	// PtCone
 	ptCone20 = -1;
 
@@ -383,7 +389,11 @@ void ChargedLepton::FillCovMatrix(Int_t runNumber_sf)
 			errorMatrixMS = errorMatrix;
 		}
 
+<<<<<<< HEAD
 		//cout<<std::setprecision(10)<<std::scientific<<"CB"<<endl;
+=======
+		//cout<<std::setprecision(10)<<std::scientific<<endl<<"CB"<<endl;
+>>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 		//cout<<std::setprecision(10)<<std::fixed<<"mu_p "<<m_momentum.P()<<endl;
 		//cout<<std::setprecision(10)<<std::scientific<<"cov_d0_exPV "<<  mu->cov_d0_exPV()<<endl;
 		//cout<<std::setprecision(10)<<std::scientific<<"cov_z0_exPV "<< mu->cov_z0_exPV() <<endl;

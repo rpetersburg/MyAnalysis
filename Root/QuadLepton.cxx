@@ -69,7 +69,11 @@ QuadLepton::~QuadLepton()
 ////////////////////////////////////////////////////////////////////////////////////////
 //									Helpers				
 ////////////////////////////////////////////////////////////////////////////////////////
+<<<<<<< HEAD
 // Resets all the variables
+=======
+// Resets all the varibles
+>>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 void QuadLepton::Reset()
 {
 	quadType = -999; 
@@ -164,6 +168,11 @@ void QuadLepton::Reset()
 	leading_jet_pt_fid = -999;
 	n_jets_truth_fid = -999;
 	leading_jet_pt_truth_fid = -999;
+<<<<<<< HEAD
+=======
+	BCHCutMedium = -999;
+	BCHCutTight	 = -999;
+>>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 
 
 }

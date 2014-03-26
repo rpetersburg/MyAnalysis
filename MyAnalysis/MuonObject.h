@@ -46,7 +46,11 @@ class MuonObject
 		void SetHist (HistContainer *curr_Hist);
 		void clearVars();		
 
+<<<<<<< HEAD
 		// Histograms
+=======
+		// Histrograms
+>>>>>>> bc7b9ddaf72f0a41dfe1bb5d9068cc4b03444c0d
 		HistContainer *Hist;
 		
 	private:

@@ -1,0 +1,1 @@
+~/eos/atlas/atlascerngroupdisk/phys-higgs/HSG2/D3PD/mc12_8TeV.147807.PowhegPythia8_AU2CT10_Zmumu.merge.NTUP_COMMON.e1169_s1469_s1470_r3752_r3549_p1575/NTUP_COMMON.01344521._00000*.root.1
