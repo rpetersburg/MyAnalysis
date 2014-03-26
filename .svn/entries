@@ -1,40 +1,0 @@
-10
-
-dir
-72
-svn+ssh://svn.cern.ch/reps/atlas-sabidi/trunk/MyAnalysis
-svn+ssh://svn.cern.ch/reps/atlas-sabidi
-
-
-
-2014-02-03T00:52:35.111391Z
-72
-sabidi
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-4525493e-7705-40b1-a816-d608a930855b
-
-Root
-dir
-
-cmt
-dir
-
-Run
-dir
-
-MyAnalysis
-dir
-
